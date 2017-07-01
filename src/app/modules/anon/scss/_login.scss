@@ -1,0 +1,54 @@
+#login {
+
+  background: #37474F;
+
+  .new-user-banner {
+    background-color: #00838F;
+    color: rgba(255,255,255,0.7);
+    width: 400px;
+    margin-bottom: 24px;
+    padding: 0 0 0 32px; }
+
+  .new-user-banner strong {
+    margin-right: 8px;
+    color: rgba(255,255,255,1); }
+
+  div.login-form.form-wrapper header span.md-headline,
+  div.login-form.form-wrapper header span.md-subhead {
+    line-height: 1; }
+
+  div.login-form.form-wrapper header span.md-headline {
+    font-family: 'Philosopher', sans-serif;
+    font-weight: 700; }
+
+  div.login-form.form-wrapper header span.md-subhead {
+    text-transform: upper-case; }
+
+  div.login-form.form-wrapper {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 2px; }
+
+  div.login-form.form-wrapper header img.app-logo {
+    width: 48px;
+    height: 48px;
+    margin-right: 16px; }
+
+  div.login-form.form-wrapper header {
+    padding: 32px 24px 24px; }
+
+  div.login-form.form-wrapper md-content {
+    background-color: #fff;
+    padding: 24px; }
+
+  div.login-form.form-wrapper md-content .new-user-notice {
+    background-color: #eee;
+    padding: 24px; }
+
+  div.login-form.form-wrapper md-content .new-user-notice p {
+    margin: 0; }
+
+  div.login-form.form-wrapper div.submit-row {
+    padding: 0 24px 24px; }
+
+}

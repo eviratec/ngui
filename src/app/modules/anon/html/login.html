@@ -1,0 +1,49 @@
+<div id="login" layout="column" layout-fill layout-align="center center">
+  <div class="login-form form-wrapper" layout="column" md-whiteframe="12dp">
+
+    <header layout="row" layout-align="start center">
+
+      <img src="https://s3-ap-southeast-2.amazonaws.com/data-studio/pub/assets/data-studio.png" class="app-logo" />
+
+      <div flex layout="column">
+        <span class="md-headline">DataStudio</span>
+        <span class="md-subhead">User Login</span>
+      </div>
+
+    </header>
+
+    <form layout="column"
+      ng-controller="LoginController"
+      ng-submit="onSubmit($event)">
+
+      <md-content layout="column">
+
+        <md-input-container>
+          <label>Username / Email</label>
+          <input ng-model="credentials.Login" required ng-minlength="5" />
+        </md-input-container>
+
+        <md-input-container>
+          <label>Password</label>
+          <input ng-model="credentials.Password" type="password" required ng-minlength="7" />
+        </md-input-container>
+
+      </md-content>
+
+      <div class="submit-row" layout="row" layout-align="end center">
+        <a class="md-button" href="#">Forgot Password</a>
+        <md-button class="md-primary md-raised" type="submit">
+          Login
+        </md-button>
+      </div>
+
+    </form>
+
+  </div>
+  <div class="new-user-banner" layout="row" layout-align="start center" md-whiteframe="12dp">
+    <strong>Don't have an account?</strong>
+    <span>It's free to signup</span>
+    <span flex></span>
+    <a class="md-button" ui-sref="app.anon.signup">Sign-up</a>
+  </div>
+</div>

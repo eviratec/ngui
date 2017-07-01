@@ -1,0 +1,1 @@
+{"version":3,"sources":["modules/app/app.scss"],"names":[],"mappings":"AAAA,IAAI;AACJ,IAAI,CAAC;EACH,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC,GAIV;EAPD,AAIE,IAJE,CAIF,EAAE;EAHJ,AAGE,IAHE,CAGF,EAAE,CAAC;IACD,KAAK,EAAE,IAAI,GACZ","file":"app.css","sourcesContent":["html,\nbody {\n  padding: 0;\n  margin: 0;\n  h1 {\n    color: #44a;\n  }\n}\n"]}

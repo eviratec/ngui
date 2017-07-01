@@ -1,0 +1,42 @@
+#signup {
+  background: #37474F; }
+
+#signup div.signup-form.form-wrapper header span.md-headline,
+#signup div.signup-form.form-wrapper header span.md-subhead {
+  line-height: 1;
+}
+#signup div.signup-form.form-wrapper header span.md-headline {
+  font-family: 'Philosopher', sans-serif;
+  font-weight: 700;
+}
+#signup div.signup-form.form-wrapper header span.md-subhead {
+  text-transform: upper-case;
+}
+#signup div.signup-form.form-wrapper {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+#signup div.signup-form.form-wrapper header img.app-logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+}
+#signup div.signup-form.form-wrapper header {
+  padding: 32px 24px 24px;
+}
+#signup div.signup-form.form-wrapper md-content {
+  background-color: #fff;
+  padding: 24px;
+}
+#signup div.signup-form.form-wrapper md-content .new-user-notice {
+  margin-top: 0;
+  font-style: italic;
+  color: #9C27B0;
+}
+#signup div.signup-form.form-wrapper md-content .new-user-notice p {
+  margin: 0;
+}
+#signup div.signup-form.form-wrapper div.submit-row {
+  padding: 0 24px 24px;
+}

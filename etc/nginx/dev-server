@@ -1,0 +1,25 @@
+server {
+
+  listen 80;
+  server_name webui.datastudio.localhost;
+
+  root /vagrant/build/;
+
+  index index.html;
+
+  sendfile off;
+  server_tokens off;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+  location ~ \.(js|css|ico)$ {
+    gzip_static on;
+    gzip_types text/plain text/xml text/css
+      text/comma-separated-values
+      text/javascript application/x-javascript
+      application/atom+xml;
+  }
+
+}

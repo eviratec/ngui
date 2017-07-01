@@ -1,0 +1,44 @@
+{
+  "name": "angular-app",
+  "version": "1.0.0",
+  "description": "Data Studio Angular App",
+  "main": "index.js",
+  "scripts": {
+    "test": "./bin/unit",
+    "prestart": "./bin/build",
+    "start": "./bin/start-dev-server"
+  },
+  "bin": {
+    "ds-build-app": "./bin/build",
+    "ds-prepare-dist": "./bin/dist",
+    "ds-dev-server": "./bin/start-dev-server"
+  },
+  "author": "Callan Peter Milne <callan.milne@eviratec.com.au>",
+  "license": "ISC",
+  "devDependencies": {
+    "@uirouter/angularjs": "1.0.3",
+    "angular": "1.6.4",
+    "angular-animate": "1.6.4",
+    "angular-aria": "1.6.4",
+    "angular-cookies": "1.6.4",
+    "angular-environment-config": "1.0.0",
+    "angular-material": "1.1.4",
+    "angular-messages": "1.6.4",
+    "angular-mocks": "1.6.4",
+    "angular-ui-router": "1.0.3",
+    "babel": "6.23.0",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-env": "1.5.1",
+    "gulp": "3.9.1",
+    "gulp-angular-templatecache": "2.0.0",
+    "gulp-babel": "6.1.2",
+    "gulp-concat": "2.6.1",
+    "gulp-sass": "3.1.0",
+    "gulp-sourcemaps": "2.6.0",
+    "jasmine": "2.6.0",
+    "karma": "1.7.0",
+    "karma-chrome-launcher": "2.1.1",
+    "karma-jasmine": "1.1.0",
+    "node-sass": "^4.5.3"
+  }
+}

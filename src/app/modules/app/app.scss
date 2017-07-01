@@ -1,0 +1,64 @@
+@import "../../../../node_modules/angular-material/angular-material.scss";
+
+body, html {
+  font-size: 14.4px;
+  font-family: "Roboto", sans-serif;
+  background-color: #37474F; }
+
+  
+body, md-content.md-blue-grey-theme {
+  background-color: #eee; }
+
+md-toolbar:not(.md-hue-1),
+.md-fab {
+    fill: #fff; }
+
+md-sidenav {
+  fill: #737373; }
+
+.user-avatar {
+  border-radius: 99%; }
+
+md-toolbar.md-tall {
+  height: 64px;
+  max-height: 64px;
+  min-height: 64px; }
+
+code {
+  color: #4285f4;
+  -webkit-font-smoothing: auto;
+  font-weight: 300;
+  background-color: #F2F2F2;
+  padding: 10px; }
+
+ul {
+  list-style: none }
+
+.folder-grid md-list-item a {
+  background-color: #fff; }
+.folder-grid md-list-item md-icon.material-icons {
+  height: 48px;
+  width: 48px;
+  font-size: 48px;
+}
+
+md-sidenav header img.app-logo {
+  height: 64px;
+  width: 64px;
+  margin: 16px;
+}
+md-sidenav header .md-caption {
+  color: rgba(0,0,0,0.57);
+}
+
+.user-dashboard md-card {
+  cursor: pointer;
+}
+
+.user-dashboard .create-app-card {
+  height: 125px;
+  margin: 8px;
+  border: 2px dashed;
+  border-radius: 3px;
+  border-color: rgba(0,0,0,0.12);
+}
