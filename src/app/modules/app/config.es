@@ -3,6 +3,7 @@
     .config(appEnvironment)
     .config(appLocation)
     .config(appThemes)
+    .run(appInit)
 
   appEnvironment.$inject = ['$appEnvironmentProvider'];
   function appEnvironment (  $appEnvironmentProvider) {
@@ -12,7 +13,7 @@
       titlePrefix: '??? :: ',
       apiUrl: 'http://localhost:3000',
     })
-    .addEnvironment('local', ['127.0.0.1', 'localhost', /\.local$/i], {
+    .addEnvironment('local', ['127.0.0.1', 'localhost', /\.localhost$/i], {
       titlePrefix: 'LOCAL :: ',
       apiUrl: 'http://localhost:3000',
     })
@@ -51,5 +52,13 @@
     $mdThemingProvider.theme('sidenavTheme')
       .primaryPalette('blue-grey')
       .dark();
+
+  }
+
+  appInit.$inject = ['$appEnvironment', '$document'];
+  function appInit (  $appEnvironment,   $document) {
+
+    $document[0].title = $appEnvironment.config.titlePrefix
+      + 'DataStudio Web UI';
 
   }

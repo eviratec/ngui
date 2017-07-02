@@ -7,6 +7,6 @@
     'ngMessages',
     'ui.router',
     'luminous.environment',
-    'DataStudioWebui.AppUser',
     'DataStudioWebui.Anon',
+    'DataStudioWebui.User',
   ]);

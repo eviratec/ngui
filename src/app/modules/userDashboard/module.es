@@ -1,5 +1,5 @@
 
-  angular.module('DataStudioWebui.Anon', [
+  angular.module('DataStudioWebui.UserDashboard', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
