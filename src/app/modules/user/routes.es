@@ -21,13 +21,18 @@
                 });
             }],
             user: ['$auth', '$api', '$state', function ($auth, $api, $state) {
-              return $api.apiGet(`/user/${$auth.user.Id}`)
-                .then(function (res) {
-                  return res.data;
-                })
-                .catch(function (err) {
-                  $state.go('app.anon.login');
-                });
+              try {
+                return $api.apiGet(`/user/${$auth.user.Id}`)
+                  .then(function (res) {
+                    return res.data;
+                  })
+                  .catch(function (err) {
+                    $state.go('app.anon.login');
+                  });
+              }
+              catch (err) {
+                $state.go('app.anon.login');
+              }
             }],
           },
         });

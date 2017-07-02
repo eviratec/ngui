@@ -2,8 +2,8 @@
   angular.module('DataStudioWebui.Anon')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$auth', '$state', '$login', '$timeout'];
-  function LoginController (  $scope,   $auth,   $state,   $login,   $timeout) {
+  LoginController.$inject = ['$scope', '$auth', '$state', '$mdDialog', '$login', '$timeout'];
+  function LoginController (  $scope,   $auth,   $state,   $mdDialog,   $login,   $timeout) {
 
     // $user.on('login', () => {
     //   $state.go('app.user.dashboard');
@@ -27,8 +27,21 @@
 
       $login(Login, Password)
         .catch((err) => {
+          let errorMsg = err.data.ErrorMsg.match(/^([A-Z_]+)\:\s(.*)$/);
+
+          $mdDialog.show(
+            $mdDialog.alert()
+              .parent(angular.element(document.body))
+              .clickOutsideToClose(true)
+              .title(errorMsg[2])
+              .textContent(errorMsg[1])
+              .ariaLabel('Login error dialog')
+              .ok('Got it!')
+              .targetEvent($ev)
+          );
+
           $timeout(function () {
-            $scope.error = err.message;
+            $scope.error = errorMsg[2];
           });
         });
 
