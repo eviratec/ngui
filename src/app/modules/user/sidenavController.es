@@ -5,6 +5,4 @@
   SidenavController.$inject = ['$scope', '$mdDialog'];
   function SidenavController (  $scope,   $mdDialog) {
 
-
-
   };

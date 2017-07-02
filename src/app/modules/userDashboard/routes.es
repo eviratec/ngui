@@ -8,18 +8,6 @@
           url: '/dashboard',
           templateUrl: 'modules/userDashboard/html/dashboard.html',
           controller: 'DashboardController',
-          resolve: {
-            userApps: ['$api', function ($api) {
-              return $api.apiGet('/apps/all')
-                .then(function (res) {
-                  return res.data;
-                })
-                .catch(function (err) {
-                  console.log(err);
-                  return [];
-                });
-            }]
-          }
         });
 
   }]);
