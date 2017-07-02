@@ -1,5 +1,5 @@
 
-  angular.module('DataStudioWebui')
+  angular.module('DataStudioWebui.Anon')
     .controller('SignupController', SignupController);
 
   SignupController.$inject = ['$scope'];

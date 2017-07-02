@@ -1,5 +1,5 @@
 
-  angular.module('DataStudioWebui', [
+  angular.module('DataStudioWebui.Api', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -7,7 +7,4 @@
     'ngMessages',
     'ui.router',
     'luminous.environment',
-    'DataStudioWebui.Api',
-    'DataStudioWebui.Anon',
-    'DataStudioWebui.User',
   ]);

@@ -9,6 +9,14 @@
           controller: 'AppController',
           controllerAs: '$app',
           abstract: true,
+          resolve: {
+            _auth: ['$auth', 'clientStore', function ($auth, clientStore) {
+              if (clientStore.hasStoredToken()) {
+                return $auth.auth(clientStore.getStoredToken());
+              }
+              return $auth;
+            }],
+          },
         });
 
   }]);

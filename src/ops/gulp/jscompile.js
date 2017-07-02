@@ -30,10 +30,12 @@ module.exports = function (gulp) {
       'src/app/modules/app/config.es',
       'src/app/modules/app/routes.es',
       'src/app/modules/app/*Controller.es',
+      'src/app/modules/app/*.es',
       'src/app/modules/*/module.es',
       'src/app/modules/*/config.es',
       'src/app/modules/*/routes.es',
       'src/app/modules/*/*Controller.es',
+      'src/app/modules/*/*.es',
     ];
 
     gulp.src(paths)

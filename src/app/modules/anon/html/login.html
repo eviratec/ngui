@@ -16,6 +16,10 @@
       ng-controller="LoginController"
       ng-submit="onSubmit($event)">
 
+      <div ng-if="error">
+        {{ error }}
+      </div>
+
       <md-content layout="column">
 
         <md-input-container>

@@ -7,4 +7,5 @@
     'ngMessages',
     'ui.router',
     'luminous.environment',
+    'DataStudioWebui.Api',
   ]);

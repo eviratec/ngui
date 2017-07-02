@@ -1,5 +1,5 @@
 
-  angular.module('DataStudioWebui')
+  angular.module('DataStudioWebui.Anon')
     .config(['$stateProvider', function ($stateProvider) {
 
       $stateProvider

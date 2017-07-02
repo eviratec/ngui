@@ -1,5 +1,6 @@
 
   angular.module('DataStudioWebui')
+    .config(appDefaultRoute)
     .config(appEnvironment)
     .config(appLocation)
     .config(appThemes)
@@ -9,25 +10,30 @@
   function appEnvironment (  $appEnvironmentProvider) {
 
     $appEnvironmentProvider
-    .setDefaults({
-      titlePrefix: '??? :: ',
-      apiUrl: 'http://localhost:3000',
-    })
-    .addEnvironment('local', ['127.0.0.1', 'localhost', /\.localhost$/i], {
-      titlePrefix: 'LOCAL :: ',
-      apiUrl: 'http://localhost:3000',
-    })
-    .addEnvironment('prod', 'webui.datastudio.eviratec.software', {
-      titlePrefix: '',
-      apiUrl: 'https://api.datastudio.eviratec.software',
-    })
-    .defaultEnvironmentName('local');
+      .setDefaults({
+        titlePrefix: '??? :: ',
+        apiUrl: 'http://localhost:3000',
+      })
+      .addEnvironment('local', ['127.0.0.1', 'localhost', /\.localhost$/i], {
+        titlePrefix: 'LOCAL :: ',
+        apiUrl: 'http://localhost:3000',
+      })
+      .addEnvironment('prod', 'webui.datastudio.eviratec.software', {
+        titlePrefix: '',
+        apiUrl: 'https://api.datastudio.eviratec.software',
+      })
+      .defaultEnvironmentName('local');
 
   }
 
   appLocation.$inject = ['$locationProvider'];
   function appLocation (  $locationProvider) {
     $locationProvider.html5Mode(true);
+  }
+
+  appDefaultRoute.$inject = ['$urlRouterProvider'];
+  function appDefaultRoute (  $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/dashboard');
   }
 
   appThemes.$inject = ['$mdThemingProvider'];

@@ -1,10 +1,12 @@
 
-  angular.module('DataStudioWebui')
+  angular.module('DataStudioWebui.Anon')
     .controller('AnonController', AnonController);
 
-  AnonController.$inject = ['$scope'];
-  function AnonController (  $scope) {
+  AnonController.$inject = ['$rootScope', '$state'];
+  function AnonController (  $rootScope,   $state) {
 
-    this.test = 'Meow';
+    $rootScope.$on('authorized', () => {
+      $state.go('app.user.dashboard');
+    });
 
   };

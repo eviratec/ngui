@@ -2,8 +2,8 @@
   angular.module('DataStudioWebui.User')
     .controller('LayoutController', LayoutController);
 
-  LayoutController.$inject = ['$scope', '$mdDialog', '$mdSidenav'];
-  function LayoutController (  $scope,   $mdDialog,   $mdSidenav) {
+  LayoutController.$inject = ['$scope', '$mdDialog', '$logout', '$mdSidenav'];
+  function LayoutController (  $scope,   $mdDialog,   $logout,   $mdSidenav) {
 
     let originatorEv;
 
@@ -62,7 +62,7 @@
 
 
     $scope.logout = function () {
-
+      $logout();
     };
 
     $scope.openMenu = function ($mdOpenMenu, ev) {
