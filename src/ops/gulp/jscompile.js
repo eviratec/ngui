@@ -68,7 +68,7 @@ module.exports = function (gulp) {
     ];
 
     deps.forEach(vendorModule => {
-      paths.push(`node_modules/${vendorModule}/**/*${vendorModule}.js`);
+      paths.push(`node_modules/${vendorModule}/**/*${vendorModule}.min.js`);
     });
 
     gulp.src(paths)

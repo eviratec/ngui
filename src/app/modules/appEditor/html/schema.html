@@ -1,0 +1,51 @@
+<div class="app-schemas" layout="row">
+
+  <div class="schema-side" flex="30">
+    <md-button ui-sref="app.user.app.schemas({appId: model.Id})">
+      Schemas
+    </md-button>
+  </div>
+
+  <div flex>
+    <md-card>
+      <md-card-header>
+        <md-card-avatar>
+          <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-card-avatar>
+        <md-card-header-text>
+          <span class="md-title">{{$schemaCtrl.schema.Name}}</span>
+          <span class="md-subhead">Schema Editor</span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-content md-no-padding>
+        <div layout="column">
+          <div class=""
+            ng-repeat="property in $schemaCtrl.properties">
+            <div layout="row" layout-align="start" flex>
+              <md-input-container flex="20">
+                <input type="text" ng-model="property.Key">
+              </md-input-container>
+                <md-select ng-model="property.Type" required>
+                  <md-option value="string">String</md-option>
+                  <md-option value="number">Number</md-option>
+                  <md-option value="boolean">Boolean</md-option>
+                </md-select>
+                <md-select ng-model="property.Format">
+                  <md-option value=""></md-option>
+                  <md-option value="email">Email</md-option>
+                  <md-option value="uuid">UUID</md-option>
+                </md-select>
+            </div>
+            <div layout="row" layout-align="start">
+              <md-checkbox ng-model="property.required">Required</md-checkbox>
+              <md-checkbox ng-model="myForm.$dirty">Form Dirty</md-checkbox>
+              <md-checkbox ng-model="myForm.$submitted">Form Submitted</md-checkbox>
+              <md-checkbox ng-model="myForm.favoriteColor.$touched">Select Touched</md-checkbox>
+            </div>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+
+</div>

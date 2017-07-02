@@ -12,6 +12,7 @@
       clients: app.Clients,
     };
 
+    $scope.chips = ["Id"];
     $scope.currentNavItem = "overview";
 
     $scope.go = function (dest) {

@@ -1,0 +1,37 @@
+<div class="app-apis" layout="row">
+
+  <div class="api-side" flex="30">
+    <md-button ui-sref="app.user.app.apis({appId: model.Id})">
+      Apis
+    </md-button>
+  </div>
+
+  <div flex>
+    <md-card>
+      <md-card-header>
+        <md-card-header-text>
+          <span class="md-headline">{{ $apiCtrl.api.Name }} Routes</span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-divider></md-divider>
+      <md-card-content style="padding:0;">
+        <div layout="column">
+          <div class="api-route-list">
+            <div class="api-route"
+              ng-repeat="path in $apiCtrl.paths"
+              layout="row"
+              layout-align="start center">
+              <span class="md-title">{{ path.Path }}</span>
+              <span flex></span>
+              <span class="http-method http-{{ method.toLowerCase() }}"
+                ng-repeat="method in path.Methods">
+                {{ method }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+
+</div>

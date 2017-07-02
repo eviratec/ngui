@@ -19,12 +19,14 @@
           </md-button>
         </md-card-header>
         <md-divider></md-divider>
-        <md-list>
-          <md-list-item ng-repeat="schema in schemas" layout="row" ng-click="null">
-            <span flex>{{ schema.Name }}</span>
-            <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ schema.PropertyCount }} Properties</span>
-          </md-list-item>
-        </md-list>
+        <div ng-repeat="schema in schemas" layout="column" style="padding:24px;">
+          <span>{{ schema.Name }}</span>
+          <div>
+            <md-chips
+              ng-model="chips"
+              md-separator-keys="[186]"></md-chips>
+          </div>
+        </div>
       </md-card>
     </div>
   </div>

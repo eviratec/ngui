@@ -1,1 +1,7 @@
-<h1>App APIs</h1>
+<ul>
+  <li ng-repeat="api in apis">
+    <a ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
+      {{ api.Name }}
+    </a>
+  </li>
+</ul>

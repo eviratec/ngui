@@ -1,4 +1,4 @@
-#appDashboard {
+#appEditor {
 
   header {
     padding: 24px 24px 8px;
@@ -18,6 +18,57 @@
   }
   .app-dashboard-cards md-card {
     margin: 8px 8px 16px;
+  }
+  .app-schemas {
+    padding: 8px;
+    .schema-side {
+      md-card {
+        md-card-content {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .app-apis {
+    padding: 8px;
+    .api-side {
+      md-card {
+        md-card-content {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .api-route-list {
+
+    background-color: #fff;
+
+    .api-route {
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      padding: 16px;
+      line-height: 1;
+      .http-method {
+        line-height: 16px;
+        padding: 8px;
+        color: rgba(255,255,255,1);
+        margin: 0 4px;
+      }
+      .http-post {
+        background-color: #558B2F;
+      }
+      .http-get {
+        background-color: #0277BD;
+      }
+      .http-delete {
+        background-color: #E64A19;
+      }
+      .http-put {
+        background-color: #EF6C00;
+      }
+    }
+
   }
 
 }
