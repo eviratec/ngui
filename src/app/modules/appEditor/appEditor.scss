@@ -1,0 +1,23 @@
+#appDashboard {
+
+  header {
+    padding: 24px 24px 8px;
+    background-color: #fff;
+  }
+  header .md-subhead {
+    color: rgba(0,0,0,0.38);
+  }
+  md-nav-bar {
+    background-color: #fff;
+  }
+  md-card.app-title-card {
+    margin: 16px;
+  }
+  .app-dashboard-cards {
+    padding: 8px;
+  }
+  .app-dashboard-cards md-card {
+    margin: 8px 8px 16px;
+  }
+
+}

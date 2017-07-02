@@ -1,0 +1,91 @@
+<div class="app-dashboard-cards" layout="row">
+
+  <div flex="50">
+    <div>
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <md-icon class="material-icons">
+              description
+            </md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">Schemas</span>
+            <span class="md-subhead">Data Types</span>
+          </md-card-header-text>
+          <md-button style="margin: 0;" class="md-accent" ng-click="addSchemaDialog($event)">
+            <md-icon class="material-icons">add</md-icon>
+            <span>Add</span>
+          </md-button>
+        </md-card-header>
+        <md-divider></md-divider>
+        <md-list>
+          <md-list-item ng-repeat="schema in schemas" layout="row" ng-click="null">
+            <span flex>{{ schema.Name }}</span>
+            <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ schema.PropertyCount }} Properties</span>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </div>
+
+  <div flex="50">
+    <div>
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <md-icon class="material-icons">
+              dashboard
+            </md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">APIs</span>
+            <span class="md-subhead">For Developers</span>
+          </md-card-header-text>
+          <md-button style="margin: 0;" class="md-accent" ng-click="addApiDialog($event)">
+            <md-icon class="material-icons">add</md-icon>
+            <span>Add</span>
+          </md-button>
+        </md-card-header>
+        <md-divider></md-divider>
+        <md-list>
+          <md-list-item ng-repeat="api in apis" layout="row" ng-click="null">
+            <span flex>{{ api.Name }}</span>
+            <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ api.CurrentStable }}</span>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+
+    <div>
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <md-icon class="material-icons">
+              web
+            </md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">Clients</span>
+            <span class="md-subhead">For Users</span>
+          </md-card-header-text>
+          <md-button style="margin: 0;" class="md-accent" ng-click="addClientDialog($event)">
+            <md-icon class="material-icons">add</md-icon>
+            <span>Add</span>
+          </md-button>
+        </md-card-header>
+        <md-divider></md-divider>
+        <md-list>
+          <md-list-item ng-repeat="client in clients" layout="row"  ng-click="null">
+            <span flex>{{ client.Name }}</span>
+            <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ client.CurrentStable }}</span>
+          </md-list-item>
+          <div>
+            {{ client.Name }}
+          </div>
+        </md-list>
+      </md-card>
+    </div>
+  </div>
+
+</div>

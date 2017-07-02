@@ -10,4 +10,5 @@
     'DataStudioWebui.Api',
     'DataStudioWebui.Anon',
     'DataStudioWebui.User',
+    'DataStudioWebui.AppEditor',
   ]);

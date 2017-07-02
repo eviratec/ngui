@@ -19,7 +19,7 @@
       <div layout="row" layout-wrap>
         <div flex="33" ng-repeat="app in apps">
           <md-card>
-            <md-card-header ui-sref="app.home.app.dashboard({ appId: app.Id })">
+            <md-card-header ui-sref="app.user.app.dashboard({ appId: app.Id })">
               <md-card-avatar>
                 <md-icon ng-if="!app.IconUrl" class="material-icons">
                   webui
@@ -40,7 +40,7 @@
             </md-card-content> -->
             <md-card-actions layout="row" layout-align="end center">
               <md-button class="md-primary"
-                ui-sref="app.home.app.dashboard({ appId: app.Id })">
+                ui-sref="app.user.app.dashboard({ appId: app.Id })">
                 <md-icon class="material-icons">
                   edit
                 </md-icon>
@@ -53,7 +53,7 @@
           <div class="create-app-card" layout="column" layout-align="center center">
             <span>New app?</span>
             <md-button class="md-raised md-primary"
-              ng-click="$home.createApp()">
+              ng-click="createApp()">
               <md-icon class="material-icons">
                 create
               </md-icon>
