@@ -2,12 +2,16 @@
   angular.module('DataStudioWebui.User')
     .controller('UserController', UserController);
 
-  UserController.$inject = ['$scope', '$rootScope', '$state', '$mdDialog', 'user'];
-  function UserController (  $scope,   $rootScope,   $state,   $mdDialog,   user) {
+  UserController.$inject = ['$scope', '$rootScope', '$auth', '$state', '$mdDialog', 'user'];
+  function UserController (  $scope,   $rootScope,   $auth,   $state,   $mdDialog,   user) {
 
     $rootScope.$on('unauthorized', () => {
       $state.go('app.anon.login');
     });
+
+    if (!$auth.isAuthorized) {
+      $state.go('app.anon.login');
+    }
 
     $scope.showSidenavApps = true;
     $scope.apps = [];

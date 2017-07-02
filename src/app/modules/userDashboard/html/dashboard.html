@@ -1,1 +1,70 @@
-<h1>dashboard</h1>
+<div layout="row"
+  flex>
+
+  <div class="user-dashboard"
+    style="margin: 8px;"
+    flex>
+
+    <div layout="column">
+
+      <div>
+        <div layout="row" layout-align="start center">
+          <h2 class="md-display-1"
+            style="padding-left: 16px;">
+            My Apps
+          </h2>
+        </div>
+      </div>
+
+      <div layout="row" layout-wrap>
+        <div flex="33" ng-repeat="app in apps">
+          <md-card>
+            <md-card-header ui-sref="app.home.app.dashboard({ appId: app.Id })">
+              <md-card-avatar>
+                <md-icon ng-if="!app.IconUrl" class="material-icons">
+                  webui
+                </md-icon>
+                <img ng-if="app.IconUrl" src="{{ app.IconUrl }}" />
+              </md-card-avatar>
+              <md-card-header-text>
+                <span class="md-title">{{ app.Name }}</span>
+                <span class="md-subhead">DataStudio App</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-divider></md-divider>
+            <!-- <md-card-content>
+              <p>
+                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+              </p>
+            </md-card-content> -->
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button class="md-primary"
+                ui-sref="app.home.app.dashboard({ appId: app.Id })">
+                <md-icon class="material-icons">
+                  edit
+                </md-icon>
+                Edit App
+              </md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+        <div flex="33">
+          <div class="create-app-card" layout="column" layout-align="center center">
+            <span>New app?</span>
+            <md-button class="md-raised md-primary"
+              ng-click="$home.createApp()">
+              <md-icon class="material-icons">
+                create
+              </md-icon>
+              Create a new App
+            </md-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -9,6 +9,14 @@
           controller: 'AnonController',
           controllerAs: '$anon',
           abstract: true,
+          resolve: {
+            authorized: ['$auth', '$state', function ($auth, $state) {
+              if ($auth.isAuthorized) {
+                $state.go('app.user.dashboard');
+              }
+              return $auth.isAuthorized;
+            }]
+          }
         })
 
         .state('app.anon.login', {
