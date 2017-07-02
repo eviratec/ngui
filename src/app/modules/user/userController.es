@@ -2,8 +2,8 @@
   angular.module('DataStudioWebui.User')
     .controller('UserController', UserController);
 
-  UserController.$inject = ['$scope', '$rootScope', '$auth', '$state', '$mdDialog', 'user', 'userApps'];
-  function UserController (  $scope,   $rootScope,   $auth,   $state,   $mdDialog,   user,   userApps) {
+  UserController.$inject = ['$api', '$scope', '$rootScope', '$auth', '$state', '$mdDialog', '$timeout', 'user', 'userApps'];
+  function UserController (  $api,   $scope,   $rootScope,   $auth,   $state,   $mdDialog,   $timeout,   user,   userApps) {
 
     $rootScope.$on('unauthorized', () => {
       $state.go('app.anon.login');
@@ -15,8 +15,9 @@
 
     $scope.showSidenavApps = true;
     $scope.apps = userApps;
+    $scope.user = user;
 
-    $scope.login = 'test';
+    $scope.login = user.Login;
 
     $scope.createApp = function ($event) {
 
@@ -43,8 +44,7 @@
         Name: name,
       };
 
-      homeService
-        .createApp(newApp)
+      $api.apiPost('/apps', newApp)
         .then(function (res) {
           $timeout(function () {
             Object.assign(newApp, res.data);

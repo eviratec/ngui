@@ -2,8 +2,8 @@
   angular.module('DataStudioWebui.AppEditor')
     .controller('AppEditorController', AppEditorController);
 
-  AppEditorController.$inject = ['$scope', '$state', '$mdDialog', 'app'];
-  function AppEditorController (  $scope,   $state,   $mdDialog,   app) {
+  AppEditorController.$inject = ['$api', '$timeout', '$scope', '$state', '$mdDialog', 'app'];
+  function AppEditorController (  $api,   $timeout,   $scope,   $state,   $mdDialog,   app) {
 
     let _app = {
       model: app,
@@ -37,14 +37,19 @@
         .cancel('Cancel');
 
       $mdDialog.show(confirm).then(function(result) {
-        // appService.createAppApi(app.model.Id, {
-        //   Name: result,
-        // })
-        // .then(function (d) {
-        //   $timeout(function () {
-        //     $app.apis.push(d.data);
-        //   });
-        // });
+
+        let appId = $scope.model.Id;
+
+        $api.apiPost(`/app/${appId}/apis`, { Name: result })
+          .then(function (res) {
+            $timeout(function () {
+              $scope.apis.push(res.data);
+            });
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+
       }, function() {
         // dialog cancelled
       });
@@ -61,14 +66,19 @@
         .cancel('Cancel');
 
       $mdDialog.show(confirm).then(function(result) {
-        // appService.createAppClient(app.model.Id, {
-        //   Name: result,
-        // })
-        // .then(function (d) {
-        //   $timeout(function () {
-        //     $app.clients.push(d.data);
-        //   });
-        // });
+
+        let appId = $scope.model.Id;
+
+        $api.apiPost(`/app/${appId}/clients`, { Name: result })
+          .then(function (res) {
+            $timeout(function () {
+              $scope.clients.push(res.data);
+            });
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+
       }, function() {
         // dialog cancelled
       });
@@ -85,14 +95,19 @@
         .cancel('Cancel');
 
       $mdDialog.show(confirm).then(function(result) {
-        // appService.createAppSchema(app.model.Id, {
-        //   Name: result,
-        // })
-        // .then(function (d) {
-        //   $timeout(function () {
-        //     $app.schemas.push(d.data);
-        //   });
-        // });
+
+        let appId = $scope.model.Id;
+
+        $api.apiPost(`/app/${appId}/schemas`, { Name: result })
+          .then(function (res) {
+            $timeout(function () {
+              $scope.schemas.push(res.data);
+            });
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+
       }, function() {
         // dialog cancelled
       });
