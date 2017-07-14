@@ -1,11 +1,12 @@
 <!doctype html>
-<html ng-app="DataStudioWebui">
+<html>
 <head>
   <meta name="charset" charset="utf-8">
   <title>Data Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/">
 </head>
-<body>
+<body ng-app="DataStudioWebui">
 
   <div id="root"
     ui-view
@@ -19,7 +20,6 @@
       requireScript('vendor.js', function () {
         requireScripts([
           'app.js',
-          'templates.js',
         ]);
       });
 
@@ -45,9 +45,9 @@
 
         var el = d.createElement('script');
 
-        el.setAttribute('src', src);
-
         appendEl(el);
+
+        el.setAttribute('src', src);
 
         if (next) {
           el.addEventListener('load', function () {

@@ -36,6 +36,7 @@ module.exports = function (gulp) {
       'src/app/modules/*/routes.es',
       'src/app/modules/*/*Controller.es',
       'src/app/modules/*/*.es',
+      '.tmp/templates.js',
     ];
 
     gulp.src(paths)
@@ -50,7 +51,7 @@ module.exports = function (gulp) {
   gulp.task('tplcachecompile', function () {
     return gulp.src('src/app/**/*/html/**/*.html')
       .pipe(templateCache('templates.js', { module: 'DataStudioWebui' }))
-      .pipe(gulp.dest('build'));
+      .pipe(gulp.dest('.tmp'));
   });
 
   gulp.task('vendorjscompile', function () {
