@@ -5,7 +5,10 @@
   SignupController.$inject = ['$state', '$scope', '$signup', '$timeout', '$mdDialog'];
   function SignupController (  $state,   $scope,   $signup,   $timeout,   $mdDialog) {
 
+    disableSignup();
+
     $scope.error = '';
+    $scope.signupEnabled = true;
 
     $scope.showProgress = false;
 
@@ -14,7 +17,11 @@
       Password: '',
     };
 
+    enableSignup();
+
     $scope.onSubmit = function ($ev) {
+
+      disableSignup();
 
       $ev.preventDefault();
 
@@ -40,16 +47,18 @@
         .catch((errorMsg) => {
           hideProgressBar();
 
-          $mdDialog.show(
-            $mdDialog.alert()
-              .parent(angular.element(document.body))
-              .clickOutsideToClose(true)
-              .title('Signup failed')
-              .textContent(errorMsg)
-              .ariaLabel('Signup error notification')
-              .ok('Got it!')
-              .targetEvent($ev)
-          );
+          let d = $mdDialog.alert()
+            .parent(angular.element(document.body))
+            .clickOutsideToClose(true)
+            .title('Signup failed')
+            .textContent(errorMsg)
+            .ariaLabel('Signup error notification')
+            .ok('Got it!')
+            .targetEvent($ev);
+
+          $mdDialog.show(d).then(() => {
+            enableSignup();
+          });
 
           $timeout(function () {
             $scope.error = errorMsg[2];
@@ -57,6 +66,14 @@
         });
 
     };
+
+    function enableSignup () {
+      $scope.signupEnabled = true;
+    }
+
+    function disableSignup () {
+      $scope.signupEnabled = false;
+    }
 
     function showProgressBar () {
       $scope.showProgress = true;
