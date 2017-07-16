@@ -16,7 +16,13 @@
           }
           reject(new Error(res.data.Error || "UNKNOWN_ERROR_408392"));
         })
-        .catch(reject);
+        .catch((res) => {
+          if (400 === res.status) {
+            return reject(res.data.ErrorMsg)
+          }
+          console.log(res);
+          reject(new Error("UNKNOWN_ERROR_408393"))
+        });
       });
     };
   };

@@ -2,8 +2,8 @@
   angular.module('DataStudioWebui.Anon')
     .controller('SignupController', SignupController);
 
-  SignupController.$inject = ['$state', '$scope', '$signup', '$mdDialog'];
-  function SignupController (  $state,   $scope,   $signup,   $mdDialog) {
+  SignupController.$inject = ['$state', '$scope', '$signup', '$timeout', '$mdDialog'];
+  function SignupController (  $state,   $scope,   $signup,   $timeout,   $mdDialog) {
 
     $scope.error = '';
 
@@ -37,19 +37,15 @@
             $state.go('app.anon.login');
           });
         })
-        .catch((err) => {
-          console.log(err);
-          let errorMsg = [];
-          // let errorMsg = err.data.ErrorMsg.match(/^([A-Z_]+)\:\s(.*)$/);
-
+        .catch((errorMsg) => {
           hideProgressBar();
 
           $mdDialog.show(
             $mdDialog.alert()
               .parent(angular.element(document.body))
               .clickOutsideToClose(true)
-              .title(errorMsg[2])
-              .textContent(errorMsg[1])
+              .title('Signup failed')
+              .textContent(errorMsg)
               .ariaLabel('Signup error notification')
               .ok('Got it!')
               .targetEvent($ev)
