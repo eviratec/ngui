@@ -11,15 +11,10 @@
           NewPassword: NewPassword,
         })
         .then((res) => {
-          if (202 === res.statusCode) {
+          if (202 === res.status) {
             return resolve();
           }
-          try {
-            reject(new Error(res.data.Error));
-          }
-          catch (e) {
-            reject(e);
-          }
+          reject(new Error(res.data.Error || "UNKNOWN_ERROR_408392"));
         })
         .catch(reject);
       });
