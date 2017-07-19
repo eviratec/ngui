@@ -5,10 +5,6 @@
   LoginController.$inject = ['$scope', '$auth', '$state', '$mdDialog', '$login', '$timeout'];
   function LoginController (  $scope,   $auth,   $state,   $mdDialog,   $login,   $timeout) {
 
-    // $user.on('login', () => {
-    //   $state.go('app.user.dashboard');
-    // });
-
     $scope.error = '';
 
     $scope.credentials = {
