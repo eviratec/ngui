@@ -11,16 +11,22 @@
   </div>
 
   <div flex>
+
     <md-card>
-      <md-card-header>
+      <md-card-header layout-align="center center">
         <md-card-header-text>
           <span class="md-headline">
             <em><strong>
               {{ $apiCtrl.api.Name }}
             </strong></em>
-            API Routes
+            API
           </span>
         </md-card-header-text>
+        <span flex></span>
+        <md-button ng-click="$apiCtrl.createRoute($event)">
+          <md-icon class="material-icons">add</md-icon>
+          Route
+        </md-button>
       </md-card-header>
       <md-divider></md-divider>
       <md-card-content style="padding:0;">
@@ -41,6 +47,45 @@
         </div>
       </md-card-content>
     </md-card>
+
+    <div layout="row"
+      layout-wrap>
+      <div flex="50"
+        ng-repeat="route in $apiCtrl.routes">
+        <md-card>
+          <md-card-header layout-align="center center">
+            <md-card-header-text>
+              <span class="md-title">
+                {{ route.Path }}
+              </span>
+            </md-card-header-text>
+            <span flex></span>
+            <md-button ng-click="$apiCtrl.createOperation($event, route)">
+              <md-icon class="material-icons">add</md-icon>
+              Op
+            </md-button>
+          </md-card-header>
+          <md-divider></md-divider>
+          <md-card-content style="padding:0;">
+            <div layout="column">
+              <div class="api-route-list">
+                <div class="api-route"
+                  ng-repeat="operation in $apiCtrl.operations.byRouteId[route.Id]"
+                  layout="row"
+                  layout-align="start center">
+                  <span class="md-title">{{ operation.Name }}</span>
+                  <span flex></span>
+                  <span class="http-method http-{{ operation.Method.toLowerCase() }}">
+                    {{ operation.Method }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+
   </div>
 
 </div>
