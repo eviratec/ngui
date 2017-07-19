@@ -19,11 +19,9 @@
 
     <md-list>
       <md-list-item ui-sref="app.user.dashboard">
-        <div class="inset">
-          <md-icon class="material-icons">
-            apps
-          </md-icon>
-        </div>
+        <md-icon class="material-icons">
+          apps
+        </md-icon>
         <p>Dashboard</p>
       </md-list-item>
 
@@ -37,22 +35,18 @@
         ui-sref="app.user.app.dashboard({ appId: app.Id })"
         ng-repeat="app in apps"
         ng-if="showSidenavApps">
-        <div class="inset">
-          <md-icon class="material-icons">
-            folder
-          </md-icon>
-        </div>
+        <md-icon class="material-icons">
+          folder
+        </md-icon>
         <p>{{ app.Name }}</p>
       </md-list-item>
 
       <md-list-item
         ng-click="createApp()"
         ng-if="showSidenavApps">
-        <div class="inset">
-          <md-icon class="material-icons">
-            create
-          </md-icon>
-        </div>
+        <md-icon class="material-icons">
+          create
+        </md-icon>
         <p>Create an App</p>
       </md-list-item>
 

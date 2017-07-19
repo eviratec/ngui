@@ -1,7 +1,17 @@
-<ul>
-  <li ng-repeat="api in apis">
-    <a ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
-      {{ api.Name }}
-    </a>
-  </li>
-</ul>
+<div class="app-apis" layout="row">
+
+  <div class="api-side" flex="30">
+    <md-list>
+      <md-subheader>App APIs</md-subheader>
+      <md-list-item ng-repeat="api in apis" ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>{{ api.Name }}</p>
+      </md-list-item>
+    </md-list>
+  </div>
+
+  <div flex>
+
+  </div>
+
+</div>

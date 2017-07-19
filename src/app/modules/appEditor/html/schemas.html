@@ -1,57 +1,17 @@
 <div class="app-schemas" layout="row">
 
   <div class="schema-side" flex="30">
-    <md-card>
-      <md-card-header>
-        <md-card-avatar>
-          <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
-        </md-card-avatar>
-        <md-card-header-text>
-          <span class="md-title">Schemas</span>
-        </md-card-header-text>
-      </md-card-header>
-      <md-card-content md-no-padding>
-        <md-list>
-          <md-list-item class="secondary-button-padding"
-            ng-repeat="schema in schemas"
-            ng-click="doPrimaryAction($event)">
-            <span>{{schema.Name}}</span>
-            <md-button class="md-secondary md-icon-button" ui-sref="app.user.app.schema({appId: model.Id, schemaId: schema.Id})">
-              <md-icon class="material-icons">
-                more_vert
-              </md-icon>
-            </md-button>
-          </md-list-item>
-        </md-list>
-      </md-card-content>
-    </md-card>
+    <md-list>
+      <md-subheader>App Schemas</md-subheader>
+      <md-list-item ng-repeat="schema in schemas" ui-sref="app.user.app.schema({ appId: model.Id, schemaId: schema.Id})">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>{{ schema.Name }}</p>
+      </md-list-item>
+    </md-list>
   </div>
 
   <div flex>
-    <md-card>
-      <md-card-header>
-        <md-card-avatar>
-          <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
-        </md-card-avatar>
-        <md-card-header-text>
-          <span class="md-title">Schemas</span>
-        </md-card-header-text>
-      </md-card-header>
-      <md-card-content md-no-padding>
-        <md-list>
-          <md-list-item class="secondary-button-padding"
-            ng-repeat="schema in schemas"
-            ng-click="doPrimaryAction($event)">
-            <span>{{schema.Name}}</span>
-            <md-button class="md-secondary md-icon-button" ng-click="null">
-              <md-icon class="material-icons">
-                more_vert
-              </md-icon>
-            </md-button>
-          </md-list-item>
-        </md-list>
-      </md-card-content>
-    </md-card>
+
   </div>
 
 </div>

@@ -1,16 +1,25 @@
 <div class="app-apis" layout="row">
 
   <div class="api-side" flex="30">
-    <md-button ui-sref="app.user.app.apis({appId: model.Id})">
-      Apis
-    </md-button>
+    <md-list>
+      <md-subheader>App APIs</md-subheader>
+      <md-list-item ng-repeat="api in apis" ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>{{ api.Name }}</p>
+      </md-list-item>
+    </md-list>
   </div>
 
   <div flex>
     <md-card>
       <md-card-header>
         <md-card-header-text>
-          <span class="md-headline">{{ $apiCtrl.api.Name }} Routes</span>
+          <span class="md-headline">
+            <em><strong>
+              {{ $apiCtrl.api.Name }}
+            </strong></em>
+            API Routes
+          </span>
         </md-card-header-text>
       </md-card-header>
       <md-divider></md-divider>
