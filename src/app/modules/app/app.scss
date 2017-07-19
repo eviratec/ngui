@@ -74,6 +74,26 @@ md-sidenav header img.app-logo {
 md-sidenav header .md-caption {
   color: rgba(0,0,0,0.57);
 }
+md-toolbar#userToolbar.md-default-theme:not(.md-menu-toolbar),
+md-toolbar#userToolbar:not(.md-menu-toolbar) {
+  background-color: #212121;
+  border-bottom: 1px solid rgba(44,44,44,1);
+}
+md-toolbar#userToolbar img.logo {
+  height: 24px;
+  width: 24px;
+  margin: 0 8px;
+}
+md-toolbar#userToolbar h3 {
+  color: rgba(255,255,255,0.5);
+}
+md-content.ds-main-content {
+  background-color: #eee;
+  .md-subheader.md-default-theme,
+  .md-subheader {
+    background-color: transparent;
+  }
+}
 
 .user-dashboard md-card {
   cursor: pointer;

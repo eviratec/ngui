@@ -1,8 +1,9 @@
 #appEditor {
 
   header {
-    padding: 24px 24px 8px;
-    background-color: #fff;
+    padding: 24px;
+    background-color: #212121;
+    color: rgba(255,255,255,1);
   }
   header .md-subhead {
     color: rgba(0,0,0,0.38);
@@ -22,21 +23,24 @@
   .app-schemas {
     padding: 8px;
     .schema-side {
-
+      margin: 8px;
     }
   }
 
   .app-apis {
     padding: 8px;
     .api-side {
-
+      margin: 8px;
+    }
+    md-card md-card-header-text .md-title {
+      font-weight: 300;
     }
   }
 
   .app-clients {
     padding: 8px;
     .client-side {
-
+      margin: 8px;
     }
   }
 

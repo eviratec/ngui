@@ -7,7 +7,7 @@
       layout-align="start center">
       <md-card-header-text>
         <span class="md-headline">
-          <strong>API /</strong>
+          <span style="font-weight:300;color:rgba(0,0,0,0.5);">API /</span>
           {{ $apiCtrl.api.Name }}
         </span>
       </md-card-header-text>
@@ -24,18 +24,17 @@
         ng-repeat="route in $apiCtrl.routes">
         <md-card>
           <md-card-header layout-align="center center"
-            style="background-color: #eee;">
+            style="background-color: #F5F5F5;">
             <md-card-header-text>
-              <span class="md-body-2">
+              <span class="md-title">
                 {{ route.Path }}
               </span>
             </md-card-header-text>
             <span flex></span>
             <md-button ng-click="$apiCtrl.createOperation($event, route)"
-              class="md-mini"
+              class="md-icon-button"
               style="margin-top:0;margin-bottom:0;">
               <md-icon class="material-icons">add</md-icon>
-              Op
             </md-button>
           </md-card-header>
           <md-divider></md-divider>
