@@ -1,15 +1,5 @@
 <div class="app-schemas" layout="row">
 
-  <div class="schema-side" flex="30">
-    <md-list>
-      <md-subheader>App Schemas</md-subheader>
-      <md-list-item ng-repeat="schema in schemas" ui-sref="app.user.app.schema({ appId: model.Id, schemaId: schema.Id})">
-          <md-icon class="material-icons">chevron_right</md-icon>
-          <p>{{ schema.Name }}</p>
-      </md-list-item>
-    </md-list>
-  </div>
-
   <div flex>
     <md-card>
       <md-card-header>
@@ -50,6 +40,16 @@
         </div>
       </md-card-content>
     </md-card>
+  </div>
+
+  <div class="schema-side" flex="30">
+    <md-list>
+      <md-subheader>App Schemas</md-subheader>
+      <md-list-item ng-repeat="schema in schemas" ui-sref="app.user.app.schema({ appId: model.Id, schemaId: schema.Id})">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>{{ schema.Name }}</p>
+      </md-list-item>
+    </md-list>
   </div>
 
 </div>

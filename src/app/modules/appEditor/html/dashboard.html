@@ -19,14 +19,12 @@
           </md-button>
         </md-card-header>
         <md-divider></md-divider>
-        <div ng-repeat="schema in schemas" layout="column" style="padding:24px;">
-          <span>{{ schema.Name }}</span>
-          <div>
-            <md-chips
-              ng-model="chips"
-              md-separator-keys="[186]"></md-chips>
-          </div>
-        </div>
+        <md-list>
+          <md-list-item ng-repeat="schema in schemas" layout="row"
+            ui-sref="app.user.app.schema({ appId: model.Id, schemaId: schema.Id})">
+            <span flex>{{ schema.Name }}</span>
+          </md-list-item>
+        </md-list>
       </md-card>
     </div>
   </div>
@@ -51,7 +49,8 @@
         </md-card-header>
         <md-divider></md-divider>
         <md-list>
-          <md-list-item ng-repeat="api in apis" layout="row" ng-click="null">
+          <md-list-item ng-repeat="api in apis" layout="row"
+            ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
             <span flex>{{ api.Name }}</span>
             <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ api.CurrentStable }}</span>
           </md-list-item>
@@ -78,7 +77,8 @@
         </md-card-header>
         <md-divider></md-divider>
         <md-list>
-          <md-list-item ng-repeat="client in clients" layout="row"  ng-click="null">
+          <md-list-item ng-repeat="client in clients" layout="row"
+            ui-sref="app.user.app.client({ appId: model.Id, clientId: client.Id})">
             <span flex>{{ client.Name }}</span>
             <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ client.CurrentStable }}</span>
           </md-list-item>
