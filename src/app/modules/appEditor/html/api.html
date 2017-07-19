@@ -59,16 +59,46 @@
           <md-card-content style="padding:0;">
             <div layout="column">
               <div class="api-route-list">
-                <div class="api-route"
-                  ng-repeat="operation in $apiCtrl.operations.byRouteId[route.Id]"
-                  layout="row"
-                  layout-align="start center">
-                  <span class="md-title">{{ operation.Name }}</span>
-                  <span flex></span>
-                  <span class="http-method http-{{ operation.Method.toLowerCase() }}">
-                    {{ operation.Method }}
-                  </span>
-                </div>
+                <md-list>
+                  <md-list-item class="api-route"
+                    ng-repeat="operation in $apiCtrl.operations.byRouteId[route.Id]"
+                    layout="row"
+                    layout-align="start center">
+                    <span class="http-method http-{{ operation.Method.toLowerCase() }}">
+                      {{ operation.Method }}
+                    </span>
+                    <md-icon class="material-icons">
+                      chevron_right
+                    </md-icon>
+                    <span class="md-body-1">{{ operation.Name }}</span>
+                    <span flex></span>
+                    <md-menu class="md-secondary">
+                      <md-button class="md-icon-button">
+                        <md-icon class="material-icons">
+                          more_vert
+                        </md-icon>
+                      </md-button>
+                      <md-menu-content width="4">
+                        <md-menu-item>
+                          <md-button>
+                            Redial
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                            Check voicemail
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                          <md-button>
+                            Notifications
+                          </md-button>
+                        </md-menu-item>
+                      </md-menu-content>
+                    </md-menu>
+                  </md-list-item>
+                </md-list>
               </div>
             </div>
           </md-card-content>
