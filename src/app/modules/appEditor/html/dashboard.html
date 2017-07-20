@@ -1,93 +1,158 @@
 <div class="app-dashboard-cards" layout="row" layout-xs="column">
 
-  <div flex-gt-xs="50">
-    <div>
-      <md-card>
-        <md-card-header>
-          <md-card-avatar>
-            <md-icon class="material-icons">
-              description
-            </md-icon>
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title">Schemas</span>
-            <span class="md-subhead">Data Types</span>
-          </md-card-header-text>
-          <md-button style="margin: 0;" class="md-accent" ng-click="addSchemaDialog($event)">
-            <md-icon class="material-icons">add</md-icon>
-            <span>Add</span>
-          </md-button>
-        </md-card-header>
-        <md-divider></md-divider>
-        <md-list>
-          <md-list-item ng-repeat="schema in schemas" layout="row"
-            ui-sref="app.user.app.schema({ appId: model.Id, schemaId: schema.Id})">
-            <span flex>{{ schema.Name }}</span>
-          </md-list-item>
-        </md-list>
-      </md-card>
+  <div flex>
+    <div layout="row"
+      layout-wrap>
+      <div flex-gt-xs="50">
+        <div>
+          <md-card>
+            <md-card-header style="background-color:#F5F5F5;">
+              <md-card-avatar>
+                <md-icon class="material-icons">
+                  description
+                </md-icon>
+              </md-card-avatar>
+              <md-card-header-text>
+                <span class="md-title">Schemas</span>
+                <span class="md-subhead">Data Types</span>
+              </md-card-header-text>
+              <md-button style="margin: 0;" class="md-icon-button" ng-click="addSchemaDialog($event)">
+                <md-icon class="material-icons">add</md-icon>
+              </md-button>
+            </md-card-header>
+            <md-divider></md-divider>
+            <div ng-if="0 === schemas.length">
+              <div class="empty-card-filler"
+                layout="column"
+                layout-align="center center">
+                <span>&#9733; {{ model.Name }} &#9733;</span>
+                <md-button class="md-accent"
+                  ng-click="addSchemaDialog($event)">
+                  <md-icon class="material-icons">add</md-icon>
+                  Add App Schema
+                </md-button>
+              </div>
+            </div>
+            <md-list ng-if="schemas.length > 0">
+              <md-list-item ng-repeat="schema in schemas" layout="row"
+                ui-sref="app.user.app.schema({ appId: model.Id, schemaId: schema.Id})">
+                <span flex>{{ schema.Name }}</span>
+              </md-list-item>
+            </md-list>
+          </md-card>
+        </div>
+      </div>
+
+      <div flex-gt-xs="50">
+        <div>
+          <md-card>
+            <md-card-header style="background-color:#F5F5F5;">
+              <md-card-avatar>
+                <md-icon class="material-icons">
+                  dashboard
+                </md-icon>
+              </md-card-avatar>
+              <md-card-header-text>
+                <span class="md-title">APIs</span>
+                <span class="md-subhead">For Developers</span>
+              </md-card-header-text>
+              <md-button style="margin: 0;" class="md-icon-button" ng-click="addApiDialog($event)">
+                <md-icon class="material-icons">add</md-icon>
+              </md-button>
+            </md-card-header>
+            <md-divider></md-divider>
+            <div ng-if="0 === apis.length">
+              <div class="empty-card-filler"
+                layout="column"
+                layout-align="center center">
+                <span>&#9733; {{ model.Name }} &#9733;</span>
+                <md-button class="md-accent"
+                  ng-click="addApiDialog($event)">
+                  <md-icon class="material-icons">add</md-icon>
+                  Add App API
+                </md-button>
+              </div>
+            </div>
+            <md-list ng-if="apis.length > 0">
+              <md-list-item ng-repeat="api in apis" layout="row"
+                ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
+                <span flex>{{ api.Name }}</span>
+                <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ api.CurrentStable }}</span>
+              </md-list-item>
+            </md-list>
+          </md-card>
+        </div>
+
+        <div>
+          <md-card>
+            <md-card-header style="background-color:#F5F5F5;">
+              <md-card-avatar>
+                <md-icon class="material-icons">
+                  web
+                </md-icon>
+              </md-card-avatar>
+              <md-card-header-text>
+                <span class="md-title">Clients</span>
+                <span class="md-subhead">For Users</span>
+              </md-card-header-text>
+              <md-button style="margin: 0;" class="md-icon-button" ng-click="addClientDialog($event)">
+                <md-icon class="material-icons">add</md-icon>
+              </md-button>
+            </md-card-header>
+            <md-divider></md-divider>
+            <div ng-if="0 === clients.length">
+              <div class="empty-card-filler"
+                layout="column"
+                layout-align="center center">
+                <span>&#9733; {{ model.Name }} &#9733;</span>
+                <md-button class="md-accent"
+                  ng-click="addClientDialog($event)">
+                  <md-icon class="material-icons">add</md-icon>
+                  Add App Client
+                </md-button>
+              </div>
+            </div>
+            <md-list ng-if="clients.length > 0">
+              <md-list-item ng-repeat="client in clients" layout="row"
+                ui-sref="app.user.app.client({ appId: model.Id, clientId: client.Id})">
+                <span flex>{{ client.Name }}</span>
+                <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ client.CurrentStable }}</span>
+              </md-list-item>
+              <div>
+                {{ client.Name }}
+              </div>
+            </md-list>
+          </md-card>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div flex-gt-xs="50">
-    <div>
-      <md-card>
-        <md-card-header>
-          <md-card-avatar>
-            <md-icon class="material-icons">
-              dashboard
-            </md-icon>
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title">APIs</span>
-            <span class="md-subhead">For Developers</span>
-          </md-card-header-text>
-          <md-button style="margin: 0;" class="md-accent" ng-click="addApiDialog($event)">
-            <md-icon class="material-icons">add</md-icon>
-            <span>Add</span>
-          </md-button>
-        </md-card-header>
-        <md-divider></md-divider>
-        <md-list>
-          <md-list-item ng-repeat="api in apis" layout="row"
-            ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
-            <span flex>{{ api.Name }}</span>
-            <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ api.CurrentStable }}</span>
-          </md-list-item>
-        </md-list>
-      </md-card>
-    </div>
-
-    <div>
-      <md-card>
-        <md-card-header>
-          <md-card-avatar>
-            <md-icon class="material-icons">
-              web
-            </md-icon>
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title">Clients</span>
-            <span class="md-subhead">For Users</span>
-          </md-card-header-text>
-          <md-button style="margin: 0;" class="md-accent" ng-click="addClientDialog($event)">
-            <md-icon class="material-icons">add</md-icon>
-            <span>Add</span>
-          </md-button>
-        </md-card-header>
-        <md-divider></md-divider>
-        <md-list>
-          <md-list-item ng-repeat="client in clients" layout="row"
-            ui-sref="app.user.app.client({ appId: model.Id, clientId: client.Id})">
-            <span flex>{{ client.Name }}</span>
-            <span class="md-caption" style="color:rgba(0,0,0,0.57);">{{ client.CurrentStable }}</span>
-          </md-list-item>
-          <div>
-            {{ client.Name }}
-          </div>
-        </md-list>
-      </md-card>
-    </div>
+  <div class="dashboard-side" flex="30">
+    <md-list>
+      <md-subheader>App actions</md-subheader>
+      <md-list-item ng-click="addSchemaDialog($event)">
+        <md-icon class="material-icons">add</md-icon>
+        <p>Create new Schema</p>
+      </md-list-item>
+      <md-list-item ng-click="addApiDialog($event)">
+        <md-icon class="material-icons">add</md-icon>
+        <p>Create new API</p>
+      </md-list-item>
+      <md-list-item ng-click="addClientDialog($event)">
+        <md-icon class="material-icons">add</md-icon>
+        <p>Create new Client</p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="null">
+        <md-icon class="material-icons">file_download</md-icon>
+        <p>Download Project</p>
+      </md-list-item>
+      <!-- <md-divider></md-divider>
+      <md-list-item ng-click="null">
+        <md-icon class="material-icons">delete</md-icon>
+        <p>Delete App</p>
+      </md-list-item> -->
   </div>
 
 </div>

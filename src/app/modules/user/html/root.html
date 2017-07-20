@@ -67,7 +67,10 @@
       <img class="logo"
         src="https://s3-ap-southeast-2.amazonaws.com/data-studio/pub/assets/data-studio.png" />
 
-      <h3 class="md-caption">DataStudio</h3>
+      <h3 class="md-caption"
+        ng-if="$mdMedia('gt-xs')">
+        DataStudio
+      </h3>
 
       <span flex></span>
 
@@ -79,7 +82,8 @@
           <md-icon class="material-icons">
             person
           </md-icon>
-          <span class="md-caption">
+          <span class="md-caption"
+            md-show-gt-xs>
             {{ login }}
           </span>
           <md-icon class="material-icons">

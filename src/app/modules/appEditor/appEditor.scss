@@ -27,6 +27,25 @@
     }
   }
 
+  .empty-card-filler {
+    margin-top: 64px;
+    margin-bottom: 32px;
+    span {
+      font-weight: 300;
+      color: rgba(0,0,0,0.57);
+    }
+  }
+
+  .app-dashboard-cards {
+    padding: 8px;
+    .dashboard-side {
+      margin: 8px;
+    }
+    md-card md-card-header-text .md-subhead {
+      font-weight: 300;
+    }
+  }
+
   .app-apis {
     padding: 8px;
     .api-side {
