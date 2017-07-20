@@ -2,6 +2,8 @@
 
   <div flex>
     <div layout="row"
+      layout-xs="column"
+      layout-align-xs="center stretch"
       layout-wrap>
       <div flex-gt-xs="50">
         <div>
@@ -128,7 +130,7 @@
     </div>
   </div>
 
-  <div class="dashboard-side" flex="30">
+  <div class="dashboard-side" flex-gt-xs="30">
     <md-list>
       <md-subheader>App actions</md-subheader>
       <md-list-item ng-click="addSchemaDialog($event)">
