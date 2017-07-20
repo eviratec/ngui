@@ -1,6 +1,28 @@
-<div class="app-clients" layout="row">
+<div class="app-clients"
+  layout="row"
+  layout-fill>
 
-  <div flex>
+  <div style="padding:8px;"
+    flex
+    layout>
+
+    <div class=""
+      style="border-radius:3px;border:2px dashed rgba(0,0,0,0.12);padding:8px;"
+      layout-align="center center"
+      layout-fill
+      layout="column">
+
+      <div class="md-display-1"
+        style="margin-bottom: 1em;">
+        App API Clients
+      </div>
+
+      <md-button class="md-primary md-raised"
+        ng-click="addSchemaDialog($event)">
+        Create a new Client
+      </md-button>
+
+    </div>
 
   </div>
 

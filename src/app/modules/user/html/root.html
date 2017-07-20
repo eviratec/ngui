@@ -19,7 +19,8 @@
     </header>
 
     <md-list>
-      <md-list-item ui-sref="app.user.dashboard">
+      <md-list-item ui-sref="app.user.dashboard"
+        ng-click="toggleSidenav('left')">
         <md-icon class="material-icons">
           apps
         </md-icon>
@@ -35,7 +36,8 @@
       <md-list-item ui-sref-active="active"
         ui-sref="app.user.app.dashboard({ appId: app.Id })"
         ng-repeat="app in apps"
-        ng-if="showSidenavApps">
+        ng-if="showSidenavApps"
+        ng-click="toggleSidenav('left')">
         <md-icon class="material-icons">
           folder
         </md-icon>
@@ -44,7 +46,8 @@
 
       <md-list-item
         ng-click="createApp()"
-        ng-if="showSidenavApps">
+        ng-if="showSidenavApps"
+        ng-click="toggleSidenav('left')">
         <md-icon class="material-icons">
           create
         </md-icon>
