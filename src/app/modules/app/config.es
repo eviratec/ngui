@@ -56,7 +56,7 @@
     $mdThemingProvider.definePalette('sidebarBlueGrey', sidebarBlueGreyMap);
 
     $mdThemingProvider.theme('sidenavTheme')
-      .primaryPalette('blue-grey')
+      .primaryPalette('grey')
       .dark();
 
   }
