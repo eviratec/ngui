@@ -2,11 +2,8 @@
   angular.module('DataStudioWebui')
     .controller('AppController', AppController);
 
-  AppController.$inject = ['$scope', '$auth'];
-  function AppController (  $scope,   $auth) {
+  AppController.$inject = ['$scope', '$auth', '$animate'];
+  function AppController (  $scope,   $auth,   $animate) {
 
-    this.test = 'Meow';
-
-    console.log($auth);
 
   };

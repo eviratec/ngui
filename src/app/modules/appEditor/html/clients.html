@@ -8,8 +8,8 @@
     <md-list>
       <md-subheader>App Clients</md-subheader>
       <md-list-item ng-repeat="client in clients" ui-sref="app.user.app.client({ appId: model.Id, clientId: client.Id})">
-          <md-icon class="material-icons">chevron_right</md-icon>
-          <p>{{ client.Name }}</p>
+        <md-icon class="material-icons">chevron_right</md-icon>
+        <p>{{ client.Name }}</p>
       </md-list-item>
     </md-list>
   </div>
