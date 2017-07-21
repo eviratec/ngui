@@ -22,15 +22,21 @@
       let Password = $scope.credentials.Password;
 
       $login(Login, Password)
+        .then(function () {
+
+        })
         .catch((err) => {
-          let errorMsg = err.data.ErrorMsg.match(/^([A-Z_]+)\:\s(.*)$/);
+          let errorMsg = '';
+          if (err.data && err.data.ErrorMsg) {
+             errorMsg = err.data.ErrorMsg;
+          }
 
           $mdDialog.show(
             $mdDialog.alert()
               .parent(angular.element(document.body))
               .clickOutsideToClose(true)
-              .title(errorMsg[2])
-              .textContent(errorMsg[1])
+              .title('Login failed')
+              .textContent(errorMsg)
               .ariaLabel('Login error dialog')
               .ok('Got it!')
               .targetEvent($ev)
