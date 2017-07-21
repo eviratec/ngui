@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.110.30"
+  config.vm.network "private_network", ip: "192.168.17.72"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -73,9 +73,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
 
     echo "=== INSTALLING NODE/NPM ==="
-    wget https://nodejs.org/dist/v7.10.0/node-v7.10.0-linux-x64.tar.xz -o wget.txt
-    tar -xf node-v7.10.0-linux-x64.tar.xz
-    mv node-v7.10.0-linux-x64 /usr/local/lib/node && cd $_
+    wget https://nodejs.org/dist/v8.2.1/node-v8.2.1-linux-x64.tar.xz -o wget.txt
+    tar -xf node-v8.2.1-linux-x64.tar.xz
+    mv node-v8.2.1-linux-x64 /usr/local/lib/node && cd $_
     chmod 777 bin/*
     ln -s /usr/local/lib/node/bin/* /usr/local/bin/
 
@@ -84,18 +84,17 @@ Vagrant.configure("2") do |config|
     apt-get install --assume-yes nginx curl
 
     echo "====== NGINX SET-UP ======"
-    cp /vagrant/etc/nginx/dev-server /etc/nginx/sites-available/angular-app
-    ln -s /etc/nginx/sites-available/angular-app /etc/nginx/sites-enabled/angular-app
+    cp /vagrant/vagrant_nginx.conf /etc/nginx/sites-available/ngui
+    ln -s /etc/nginx/sites-available/ngui /etc/nginx/sites-enabled/ngui
     rm /etc/nginx/sites-enabled/default
     service nginx restart
 
     echo "=== RESOLVING NPM DEPS ==="
     cd /vagrant
     npm install
-    npm ln -s
 
     echo "== STARTING DEV SERVER =="
-    nohup /usr/local/lib/node/bin/ds-dev-server &
+    nohup npm start &
 
     cd ~
   SHELL

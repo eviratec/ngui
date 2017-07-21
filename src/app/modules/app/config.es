@@ -16,7 +16,7 @@
       })
       .addEnvironment('local', ['127.0.0.1', 'localhost', /\.localhost$/i], {
         titlePrefix: 'LOCAL :: ',
-        apiUrl: 'http://localhost:3000',
+        apiUrl: 'http://api.datastudio.localhost',
       })
       .addEnvironment('prod', 'webui.datastudio.eviratec.software', {
         titlePrefix: '',
