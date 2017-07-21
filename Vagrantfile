@@ -92,7 +92,6 @@ Vagrant.configure("2") do |config|
     echo "=== RESOLVING NPM DEPS ==="
     cd /vagrant
     npm install
-    npm ln -s
 
     echo "== STARTING DEV SERVER =="
     nohup npm start &
