@@ -1,37 +1,167 @@
-<div class="app-apis" layout="row">
-
-  <div class="api-side" flex="30">
-    <md-button ui-sref="app.user.app.apis({appId: model.Id})">
-      Apis
-    </md-button>
-  </div>
+<div class="app-apis"
+  layout="row"
+  layout-xs="column">
 
   <div flex>
-    <md-card>
-      <md-card-header>
-        <md-card-header-text>
-          <span class="md-headline">{{ $apiCtrl.api.Name }} Routes</span>
-        </md-card-header-text>
-      </md-card-header>
-      <md-divider></md-divider>
-      <md-card-content style="padding:0;">
+
+    <div style="border-bottom: 1px solid rgba(0,0,0,0.12);margin:24px 8px 8px;padding:0 8px;"
+      layout="row"
+      layout-align="start center">
+      <md-card-header-text>
+        <span class="md-headline">
+          <span style="font-weight:300;color:rgba(0,0,0,0.5);">API /</span>
+          {{ $apiCtrl.api.Name }}
+        </span>
+      </md-card-header-text>
+      <span flex></span>
+      <md-button ng-click="$apiCtrl.createRoute($event)">
+        <md-icon class="material-icons">add</md-icon>
+        Route
+      </md-button>
+    </div>
+
+    <div layout="row"
+      layout-align="start start"
+      layout-wrap>
+
+      <md-card ng-if="0 === $apiCtrl.routes.length"
+        flex>
+        <md-card-content style="padding:0;">
+          <div style="padding: 40px 16px;text-align: center;">
+            Add an API Route to make a start
+          </div>
+        </md-card-content>
+      </md-card>
+
+      <div ng-if="$apiCtrl.routes.length > 0"
+        flex>
         <div layout="column">
           <div class="api-route-list">
-            <div class="api-route"
-              ng-repeat="path in $apiCtrl.paths"
-              layout="row"
-              layout-align="start center">
-              <span class="md-title">{{ path.Path }}</span>
-              <span flex></span>
-              <span class="http-method http-{{ method.toLowerCase() }}"
-                ng-repeat="method in path.Methods">
-                {{ method }}
-              </span>
-            </div>
+            <md-card ng-repeat="route in $apiCtrl.routes">
+              <md-card-content style="padding:0;">
+                <div class="api-route">
+
+                  <div class="api-route-header"
+                    layout="row"
+                    layout-align="center center">
+                    <span class="md-headline">{{ route.Path }}</span>
+                    <span flex></span>
+                    <md-button ng-click="$apiCtrl.createOperation($event, route)"
+                      class="md-icon-button"
+                      style="margin-top:0;margin-bottom:0;">
+                      <md-icon class="material-icons">add</md-icon>
+                    </md-button>
+                  </div>
+
+                  <md-divider></md-divider>
+
+                  <div class="api-route-wrapper"
+                    layout="row"
+                    layout-wrap="true"
+                    layout-xs="column"
+                    layout-align="start center"
+                    layout-align-xs="start stretch">
+
+                    <div class="api-operation"
+                      ng-repeat="operation in $apiCtrl.operations.byRouteId[route.Id]"
+                      md-whiteframe="1dp"
+                      layout="row"
+                      layout-align="start center"
+                      flex-xs
+                      flex-gt-xs="30">
+                      <span class="http-method http-{{ operation.Method.toLowerCase() }}">
+                        {{ operation.Method }}
+                      </span>
+                      <md-icon class="material-icons">
+                        chevron_right
+                      </md-icon>
+                      <span class="md-body-1">{{ operation.Name }}</span>
+                      <span flex></span>
+                      <md-menu class="md-secondary">
+                        <md-button class="md-icon-button">
+                          <md-icon class="material-icons">
+                            more_vert
+                          </md-icon>
+                        </md-button>
+                        <md-menu-content width="4">
+                          <md-menu-item>
+                            <md-button>
+                              Re-name
+                            </md-button>
+                          </md-menu-item>
+                          <md-menu-item>
+                            <md-button>
+                              View details
+                            </md-button>
+                          </md-menu-item>
+                          <md-menu-divider></md-menu-divider>
+                          <md-menu-item>
+                            <md-button>
+                              Delete operation
+                            </md-button>
+                          </md-menu-item>
+                        </md-menu-content>
+                      </md-menu>
+                    </div>
+
+                    <div class="inline-create-btn-wrapper"
+                      layout="row"
+                      layout-align="start center"
+                      flex-xs
+                      flex-gt-xs="30">
+                      <md-button ng-click="$apiCtrl.createOperation($event, route)"
+                        class="md-no-style"
+                        style="margin-top:0;margin-bottom:0;"
+                        flex>
+                        <md-icon class="material-icons">add</md-icon>
+                        <span>API operation</span>
+                      </md-button>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </md-card-content>
+            </md-card>
           </div>
         </div>
-      </md-card-content>
-    </md-card>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="api-side" flex-gt-xs="30" flex-xs>
+    <md-list>
+      <md-subheader>API Menu</md-subheader>
+      <md-list-item ng-click="null">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>Export spec ...</p>
+      </md-list-item>
+      <md-list-item ng-click="null">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>Import spec ...</p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="null">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>Generate tests</p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="null">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>Clone / copy</p>
+      </md-list-item>
+      <md-list-item ng-click="null">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>Delete API</p>
+      </md-list-item>
+      <md-subheader>App APIs</md-subheader>
+      <md-list-item ng-repeat="api in apis" ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
+          <md-icon class="material-icons">chevron_right</md-icon>
+          <p>{{ api.Name }}</p>
+      </md-list-item>
+    </md-list>
   </div>
 
 </div>

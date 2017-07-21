@@ -21,7 +21,7 @@ module.exports = function (gulp) {
   gulp.task('watch-dev', function() {
     gulp.watch(['src/app/**/*.es'], ['jscompile']);
     gulp.watch(['src/app/**/*.scss'], ['csscompile']);
-    gulp.watch(['src/app/**/*.html'], ['tplcachecompile']);
+    gulp.watch(['src/app/**/*.html'], ['tplcachecompile', 'jscompile']);
   });
 
 };

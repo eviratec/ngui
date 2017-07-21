@@ -1,5 +1,6 @@
 <md-sidenav class="md-sidenav-left md-whiteframe-z2"
   layout="column"
+  md-theme="sidenavTheme"
   md-component-id="left"
   md-is-locked-open="$mdMedia('gt-md')">
 
@@ -18,12 +19,11 @@
     </header>
 
     <md-list>
-      <md-list-item ui-sref="app.user.dashboard">
-        <div class="inset">
-          <md-icon class="material-icons">
-            apps
-          </md-icon>
-        </div>
+      <md-list-item ui-sref="app.user.dashboard"
+        ng-click="toggleSidenav('left')">
+        <md-icon class="material-icons">
+          apps
+        </md-icon>
         <p>Dashboard</p>
       </md-list-item>
 
@@ -36,23 +36,21 @@
       <md-list-item ui-sref-active="active"
         ui-sref="app.user.app.dashboard({ appId: app.Id })"
         ng-repeat="app in apps"
-        ng-if="showSidenavApps">
-        <div class="inset">
-          <md-icon class="material-icons">
-            folder
-          </md-icon>
-        </div>
+        ng-if="showSidenavApps"
+        ng-click="toggleSidenav('left')">
+        <md-icon class="material-icons">
+          folder
+        </md-icon>
         <p>{{ app.Name }}</p>
       </md-list-item>
 
       <md-list-item
         ng-click="createApp()"
-        ng-if="showSidenavApps">
-        <div class="inset">
-          <md-icon class="material-icons">
-            create
-          </md-icon>
-        </div>
+        ng-if="showSidenavApps"
+        ng-click="toggleSidenav('left')">
+        <md-icon class="material-icons">
+          create
+        </md-icon>
         <p>Create an App</p>
       </md-list-item>
 
@@ -66,38 +64,36 @@
   ng-controller="LayoutController"
   layout-fill
   ng-cloak>
-  <md-toolbar>
+  <md-toolbar id="userToolbar">
     <div class="md-toolbar-tools">
 
-      <md-button class="md-icon-button"
-        aria-label="Menu"
-        ng-click="toggleSidenav('left')"
-        hide-gt-md>
-        <md-icon class="material-icons">
-          menu
-        </md-icon>
-      </md-button>
+      <img class="logo"
+        src="https://s3-ap-southeast-2.amazonaws.com/data-studio/pub/assets/data-studio.png" />
 
-      <h3 hide-gt-md>DataStudio</h3>
+      <h3 class="md-caption"
+        ng-if="$mdMedia('gt-xs')">
+        DataStudio
+      </h3>
 
       <span flex></span>
 
       <md-menu>
-
+        <!-- trigger -->
         <md-button
           aria-label="Open Settings"
           ng-click="openMenu($mdOpenMenu, $event)">
           <md-icon class="material-icons">
             person
           </md-icon>
-          <span class="md-caption">
+          <span class="md-caption"
+            md-show-gt-xs>
             {{ login }}
           </span>
           <md-icon class="material-icons">
             arrow_drop_down
           </md-icon>
         </md-button>
-
+        <!-- content -->
         <md-menu-content width="4">
           <md-menu-item>
             <md-button ng-click="changeProfile($event)">
@@ -120,14 +116,24 @@
           </md-menu-item>
         </md-menu-content>
       </md-menu>
+
+      <md-button class="md-icon-button"
+        aria-label="Menu"
+        ng-click="toggleSidenav('left')"
+        hide-gt-md>
+        <md-icon class="material-icons">
+          menu
+        </md-icon>
+      </md-button>
     </div>
   </md-toolbar>
 
-  <md-content class=""
+  <md-content class="ds-main-content"
     layout="column"
     md-scroll-y
     flex>
     <div layout="column"
+      layout-fill
       ui-view>
     </div>
   </md-content>

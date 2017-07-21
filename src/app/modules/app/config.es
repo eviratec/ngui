@@ -56,7 +56,7 @@
     $mdThemingProvider.definePalette('sidebarBlueGrey', sidebarBlueGreyMap);
 
     $mdThemingProvider.theme('sidenavTheme')
-      .primaryPalette('blue-grey')
+      .primaryPalette('grey')
       .dark();
 
   }
@@ -66,5 +66,13 @@
 
     $document[0].title = $appEnvironment.config.titlePrefix
       + 'DataStudio Web UI';
+
+    let robotoFontSrc = "https://fonts.googleapis.com/css?family=Roboto:200,300,400,500";
+    let linkEl = $document[0].createElement('link');
+
+    linkEl.setAttribute("rel", "stylesheet");
+    linkEl.setAttribute("href", robotoFontSrc);
+
+    $document[0].body.appendChild(linkEl);
 
   }

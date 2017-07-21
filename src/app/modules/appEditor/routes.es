@@ -73,6 +73,41 @@
                   return {};
                 });
             }],
+            routes: ['$api', '$stateParams', function ($api, $stateParams) {
+              let apiId = $stateParams.apiId;
+              return $api.apiGet(`/api/${apiId}/routes`)
+                .then(function (res) {
+                  return res.data;
+                })
+                .catch(function (err) {
+                  console.log(err);
+                  return {};
+                });
+            }],
+            operations: ['$api', '$stateParams', function ($api, $stateParams) {
+              let apiId = $stateParams.apiId;
+              return $api.apiGet(`/api/${apiId}/operations`)
+                .then(function (res) {
+                  let r = {
+                    all: res.data,
+                    byRouteId: {},
+                    orphaned: [],
+                  };
+                  r.all.forEach(d => {
+                    let routeId = d.RouteId;
+                    if (!routeId) {
+                      return r.orphaned.push(d);
+                    }
+                    r.byRouteId[routeId] = r.byRouteId[routeId] || [];
+                    r.byRouteId[routeId].push(d);
+                  });
+                  return r;
+                })
+                .catch(function (err) {
+                  console.log(err);
+                  return {};
+                });
+            }],
           }
         })
         .state('app.user.app.clients', {

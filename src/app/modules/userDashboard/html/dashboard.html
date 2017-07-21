@@ -16,8 +16,8 @@
         </div>
       </div>
 
-      <div layout="row" layout-wrap>
-        <div flex="33" ng-repeat="app in apps">
+      <div layout="row" layout-xs="column" layout-wrap>
+        <div flex-gt-xs="33" ng-repeat="app in apps">
           <md-card>
             <md-card-header ui-sref="app.user.app.dashboard({ appId: app.Id })">
               <md-card-avatar>
@@ -32,12 +32,6 @@
               </md-card-header-text>
             </md-card-header>
             <md-divider></md-divider>
-            <!-- <md-card-content>
-              <p>
-                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-              </p>
-            </md-card-content> -->
             <md-card-actions layout="row" layout-align="end center">
               <md-button class="md-primary"
                 ui-sref="app.user.app.dashboard({ appId: app.Id })">
@@ -49,7 +43,7 @@
             </md-card-actions>
           </md-card>
         </div>
-        <div flex="33">
+        <div flex-gt-xs="33">
           <div class="create-app-card" layout="column" layout-align="center center">
             <span>New app?</span>
             <md-button class="md-raised md-primary"

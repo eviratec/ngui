@@ -37,8 +37,29 @@ md-toolbar:not(.md-hue-1),
 .md-fab {
     fill: #fff; }
 
-md-sidenav {
-  fill: #737373; }
+md-sidenav.md-sidenav-left.md-sidenavTheme-theme {
+
+  color: rgba(255,255,255,1);
+  background-color: #424242;
+
+  header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: #303030;
+    img.app-logo {
+      height: 48px;
+      width: 48px;
+      margin: 16px;
+    }
+    .md-caption {
+      color: rgba(255,255,255,0.5);
+    }
+  }
+
+  .md-subheader.md-sidenavTheme-theme {
+    background-color: transparent;
+  }
+
+}
 
 .user-avatar {
   border-radius: 99%; }
@@ -66,13 +87,25 @@ ul {
   font-size: 48px;
 }
 
-md-sidenav header img.app-logo {
-  height: 48px;
-  width: 48px;
-  margin: 16px;
+md-toolbar#userToolbar.md-default-theme:not(.md-menu-toolbar),
+md-toolbar#userToolbar:not(.md-menu-toolbar) {
+  background-color: #212121;
+  border-bottom: 1px solid rgba(44,44,44,1);
 }
-md-sidenav header .md-caption {
-  color: rgba(0,0,0,0.57);
+md-toolbar#userToolbar img.logo {
+  height: 24px;
+  width: 24px;
+  margin: 0 8px;
+}
+md-toolbar#userToolbar h3 {
+  color: rgba(255,255,255,0.5);
+}
+md-content.ds-main-content {
+  background-color: #eee;
+  .md-subheader.md-default-theme,
+  .md-subheader {
+    background-color: transparent;
+  }
 }
 
 .user-dashboard md-card {
