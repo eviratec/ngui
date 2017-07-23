@@ -51,8 +51,62 @@
     .api-side {
       margin: 8px;
     }
-    md-card md-card-header-text .md-title {
-      font-weight: 300;
+    .api-route-list {
+      md-card {
+        margin: 16px 8px;
+        background: transparent;
+        box-shadow: none;
+        md-card-header-text .md-title {
+          font-weight: 300;
+        }
+      }
+      .api-route {
+        &:nth-of-type(even) {
+          background-color: #FAFAFA;
+        }
+        .api-route-header {
+          padding: 16px 16px 8px;
+        }
+        .api-route-wrapper {
+          padding: 8px;
+          background: #424242;
+          border-radius: 0 0 3px 3px;
+        }
+        .inline-create-btn-wrapper {
+          margin: 8px;
+          border: 2px dashed rgba(255,255,255,0.12);
+          border-radius: 3px;
+          padding: 4px;
+          color: rgba(255,255,255,1);
+          md-icon {
+            color: rgba(255,255,255,0.7);
+          }
+        }
+        .api-operation {
+          margin: 8px;
+          padding: 4px 8px;
+          background-color: #fff;
+          .http-method {
+            line-height: 16px;
+            padding: 8px;
+            color: rgba(255,255,255,1);
+            margin: 0 8px 0 0;
+            width: 48px;
+          }
+          .http-post {
+            background-color: #558B2F;
+          }
+          .http-get {
+            background-color: #0277BD;
+          }
+          .http-delete {
+            background-color: #E64A19;
+          }
+          .http-put {
+            background-color: #EF6C00;
+          }
+        }
+      }
     }
   }
 
@@ -63,55 +117,6 @@
     }
   }
 
-  .api-route-list {
 
-    md-card {
-      margin: 16px 8px;
-    }
-    .api-route {
-      &:nth-of-type(even) {
-        background-color: #FAFAFA;
-      }
-      .api-route-header {
-        padding: 16px 16px 8px;
-      }
-      .api-route-wrapper {
-        padding: 8px;
-        background: #f5f5f5;
-        border-radius: 0 0 3px 3px;
-      }
-      .inline-create-btn-wrapper {
-        margin: 8px;
-        border: 2px dashed rgba(0,0,0,0.12);
-        border-radius: 3px;
-        padding: 4px;
-      }
-      .api-operation {
-        margin: 8px;
-        padding: 4px 8px;
-        background-color: #fff;
-        .http-method {
-          line-height: 16px;
-          padding: 8px;
-          color: rgba(255,255,255,1);
-          margin: 0 8px 0 0;
-          width: 48px;
-        }
-        .http-post {
-          background-color: #558B2F;
-        }
-        .http-get {
-          background-color: #0277BD;
-        }
-        .http-delete {
-          background-color: #E64A19;
-        }
-        .http-put {
-          background-color: #EF6C00;
-        }
-      }
-    }
-
-  }
 
 }
