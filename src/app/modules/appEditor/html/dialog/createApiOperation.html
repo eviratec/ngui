@@ -1,0 +1,54 @@
+<md-dialog id="Dialog_CreateApiOperation"
+  aria-label="Create Operation Form">
+  <form name="createOperationForm" ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Create API Operation</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout="row" layout-xs="column" layout-align="start start" layout-align-xs="start stretch">
+          <md-input-container>
+            <label>Route Path</label>
+            <input ng-model="apiRoute.Path" readonly>
+          </md-input-container>
+
+          <md-input-container style="min-width: 100px;">
+            <label>Method</label>
+            <md-select name="httpMethod" ng-model="$data.Method" required>
+              <md-option value="get">GET</md-option>
+              <md-option value="post">POST</md-option>
+              <md-option value="put">PUT</md-option>
+              <md-option value="patch">PATCH</md-option>
+              <md-option value="delete">DELETE</md-option>
+            </md-select>
+            <div class="errors" ng-messages="createOperationForm.httpMethod.$error">
+              <div ng-message="required">Required</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container>
+            <label>Name (Operation ID)</label>
+            <input name="name" ng-model="$data.Name" md-maxlength="50">
+          </md-input-container>
+        </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+        Cancel
+      </md-button>
+      <md-button class="md-primary" ng-click="answer('useful')">
+        Create API Operation
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

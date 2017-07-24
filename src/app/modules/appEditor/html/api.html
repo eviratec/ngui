@@ -43,14 +43,8 @@
 
                   <div class="api-route-header"
                     layout="row"
-                    layout-align="center center">
-                    <span class="md-headline">{{ route.Path }}</span>
-                    <span flex></span>
-                    <md-button ng-click="$apiCtrl.createOperation($event, route)"
-                      class="md-icon-button"
-                      style="margin-top:0;margin-bottom:0;">
-                      <md-icon class="material-icons">add</md-icon>
-                    </md-button>
+                    layout-align="start center">
+                    <span class="md-body-1">{{ route.Path }}</span>
                   </div>
 
                   <md-divider></md-divider>
@@ -69,7 +63,7 @@
                       layout-align="start center"
                       flex-xs
                       flex-gt-xs="30">
-                      <span class="http-method http-{{ operation.Method.toLowerCase() }}">
+                      <span class="md-caption http-method http-{{ operation.Method.toLowerCase() }}">
                         {{ operation.Method }}
                       </span>
                       <span class="md-body-1">{{ operation.Name }}</span>

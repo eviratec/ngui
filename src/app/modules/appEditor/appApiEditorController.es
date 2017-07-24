@@ -14,29 +14,39 @@
 
     $apiCtrl.createOperation = function ($event, route) {
 
-      var confirm = $mdDialog.prompt()
-        .title('Name the Operation')
-        .placeholder('Operation Name/ID')
-        .ariaLabel('Operation Name/ID')
-        .initialValue('getObject')
-        .targetEvent($event)
-        .ok('Create Operation')
-        .cancel('Cancel');
+      let createApiOperation = {
+        controller: 'CreateApiOperationDialogController',
+        templateUrl: 'modules/appEditor/html/dialog/createApiOperation.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose: true,
+        fullscreen: false,
+        locals: {
+          apiRoute: route,
+        },
+      };
 
-      $mdDialog.show(confirm).then(function(operationId) {
-        createOperation(route, operationId);
+      $mdDialog.show(createApiOperation).then(function(data) {
+        createOperation(data);
       }, function() {
 
       });
 
     }
 
-    function createOperation (route, operationId) {
+    function createOperation (data) {
+
+      data = data || {};
+
+      let route = data._apiRoute;
+      let name = data.Name;
+      let method = data.Method;
 
       let routeId = route.Id || null;
       let newOperation = {
         RouteId: routeId,
-        Name: operationId,
+        Name: name,
+        Method: method,
       };
 
       $api.apiPost('/api/' + apiId() + '/operations', newOperation)
@@ -103,4 +113,29 @@
       return $apiCtrl.api.Id;
     }
 
+  }
+
+  angular.module('DataStudioWebui.AppEditor')
+    .controller('CreateApiOperationDialogController', CreateApiOperationDialogController);
+
+  CreateApiOperationDialogController.$inject = ['$scope', '$mdDialog', 'apiRoute'];
+  function CreateApiOperationDialogController (  $scope,   $mdDialog,   apiRoute) {
+    $scope.$data = {
+      Method: 'get',
+      _apiRoute: apiRoute,
+    };
+
+    $scope.apiRoute = apiRoute;
+
+    $scope.hide = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function() {
+      $mdDialog.hide($scope.$data);
+    };
   }
