@@ -14,6 +14,10 @@
         </span>
       </md-card-header-text>
       <span flex></span>
+      <md-button ng-click="$apiCtrl.showSchemaView($event)">
+        <md-icon class="material-icons">file_download</md-icon>
+        Schema
+      </md-button>
       <md-button ng-click="$apiCtrl.createRoute($event)">
         <md-icon class="material-icons">add</md-icon>
         Route
@@ -125,7 +129,7 @@
   <div class="api-side" flex-gt-xs="30" flex-xs>
     <md-list>
       <md-subheader>API Menu</md-subheader>
-      <md-list-item ng-click="null">
+      <md-list-item ng-click="$apiCtrl.showSchemaView($event)">
           <md-icon class="material-icons">chevron_right</md-icon>
           <p>Export spec ...</p>
       </md-list-item>

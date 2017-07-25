@@ -12,6 +12,29 @@
     $apiCtrl.operations = operations;
     $apiCtrl.routes = routes;
 
+    $apiCtrl.showSchemaView = function ($event) {
+
+      let schemaView = {
+        controller: 'AppApiSchemaDialogController',
+        templateUrl: 'modules/appEditor/html/dialog/viewApiSchema.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose: true,
+        fullscreen: true,
+        locals: {
+          operations: operations,
+          routes: routes,
+        },
+      };
+
+      $mdDialog.show(schemaView).then(function() {
+
+      }, function() {
+
+      });
+
+    }
+
     $apiCtrl.createOperation = function ($event, route) {
 
       let createApiOperation = {
@@ -20,7 +43,7 @@
         parent: angular.element(document.body),
         targetEvent: $event,
         clickOutsideToClose: true,
-        fullscreen: false,
+        fullscreen: true,
         locals: {
           apiRoute: route,
         },

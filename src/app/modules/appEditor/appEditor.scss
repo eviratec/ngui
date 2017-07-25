@@ -4,7 +4,11 @@
     background: #212121;
   }
 }
-
+#Dialog_ViewApiSchema{
+  .schema-source pre {
+    margin: 24px;
+  }
+}
 #appEditor {
 
   header {
@@ -137,7 +141,6 @@
       margin: 8px;
     }
   }
-
 
 
 }
