@@ -1,39 +1,80 @@
 <div class="app-apis"
   layout="row"
-  layout-fill>
+  layout-xs="column"
+  layout-fill-gt-xs>
 
   <div style="padding:8px;"
-    flex
-    layout>
+    layout-xs="column"
+    flex>
 
-    <div class=""
-      style="border-radius:3px;border:2px dashed rgba(0,0,0,0.12);padding:8px;"
-      layout-align="center center"
-      layout-fill
-      layout="column">
+    <div layout="column"
+      layout-align="start stretch">
 
-      <div class="md-display-1"
-        style="margin-bottom: 1em;">
-        App APIs
+      <div style="border-bottom: 1px solid rgba(0,0,0,0.12);margin:24px 8px 8px;padding:0 8px;height:49px;"
+        layout="row"
+        layout-align="start center">
+        <md-card-header-text>
+          <span class="md-headline">
+            <span style="font-weight:300;color:rgba(0,0,0,0.5);">APIs</span>
+          </span>
+        </md-card-header-text>
       </div>
 
-      <md-button class="md-primary md-raised"
-        ng-click="addSchemaDialog($event)">
-        Create a new API
-      </md-button>
+      <div style="margin:8px;">
+        <div class=""
+          style="border-radius:3px;border:2px dashed rgba(0,0,0,0.12);padding:8px;"
+          layout-align="center center"
+          layout-fill
+          flex
+          layout="column"
+          ng-if="0 === apis.length">
 
+          <p class="md-body-1">
+            Nothing to show yet
+          </p>
+
+          <md-button class="md-primary md-raised"
+            ng-click="addApiDialog($event)">
+            Create API
+          </md-button>
+
+        </div>
+      </div>
+
+      <div layout="row" layout-xs="column" layout-wrap>
+        <div flex-gt-xs="33" ng-repeat="api in apis">
+          <md-card>
+            <md-card-header ui-sref="app.user.app.api({ appId: api.AppId, apiId: api.Id })">
+              <md-card-header-text>
+                <span class="md-title">{{ api.Name }}</span>
+                <span class="md-subhead">{{ $appEditor.api.Name }} API</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-divider></md-divider>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button class="md-primary"
+                ui-sref="app.user.app.api({ appId: api.AppId, apiId: api.Id })">
+                <md-icon class="material-icons">
+                  edit
+                </md-icon>
+                Edit API
+              </md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+        <div flex-gt-xs="33" ng-if="apis.length > 0">
+          <div class="create-api-card" layout="column" layout-align="center center">
+            <md-button class="md-raised md-primary"
+              ng-click="addApiDialog($event)">
+              <md-icon class="material-icons">
+                create
+              </md-icon>
+              Create API
+            </md-button>
+          </div>
+        </div>
+      </div>
     </div>
-
-  </div>
-
-  <div class="api-side" flex="30">
-    <md-list>
-      <md-subheader>App APIs</md-subheader>
-      <md-list-item ng-repeat="api in apis" ui-sref="app.user.app.api({ appId: model.Id, apiId: api.Id})">
-          <md-icon class="material-icons">chevron_right</md-icon>
-          <p>{{ api.Name }}</p>
-      </md-list-item>
-    </md-list>
   </div>
 
 </div>

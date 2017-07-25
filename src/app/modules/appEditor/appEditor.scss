@@ -38,6 +38,14 @@
     }
   }
 
+  .create-api-card {
+    height: 125px;
+    margin: 8px;
+    border: 2px dashed;
+    border-radius: 3px;
+    border-color: rgba(0,0,0,0.12);
+  }
+
   .empty-card-filler {
     margin-top: 64px;
     margin-bottom: 32px;
@@ -55,6 +63,9 @@
     md-card md-card-header-text .md-subhead {
       font-weight: 300;
     }
+  }
+  .app-api-cards {
+    padding:8px;
   }
 
   .app-apis {
