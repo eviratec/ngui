@@ -14,6 +14,10 @@
         </span>
       </md-card-header-text>
       <span flex></span>
+      <md-button ng-click="$apiCtrl.showSchemaView($event)">
+        <md-icon class="material-icons">file_download</md-icon>
+        Schema
+      </md-button>
       <md-button ng-click="$apiCtrl.createRoute($event)">
         <md-icon class="material-icons">add</md-icon>
         Route
@@ -43,14 +47,8 @@
 
                   <div class="api-route-header"
                     layout="row"
-                    layout-align="center center">
-                    <span class="md-headline">{{ route.Path }}</span>
-                    <span flex></span>
-                    <md-button ng-click="$apiCtrl.createOperation($event, route)"
-                      class="md-icon-button"
-                      style="margin-top:0;margin-bottom:0;">
-                      <md-icon class="material-icons">add</md-icon>
-                    </md-button>
+                    layout-align="start center">
+                    <span class="md-body-1">{{ route.Path }}</span>
                   </div>
 
                   <md-divider></md-divider>
@@ -69,18 +67,15 @@
                       layout-align="start center"
                       flex-xs
                       flex-gt-xs="30">
-                      <span class="http-method http-{{ operation.Method.toLowerCase() }}">
+                      <span class="md-caption http-method http-{{ operation.Method.toLowerCase() }}">
                         {{ operation.Method }}
                       </span>
-                      <md-icon class="material-icons">
-                        chevron_right
-                      </md-icon>
                       <span class="md-body-1">{{ operation.Name }}</span>
                       <span flex></span>
                       <md-menu class="md-secondary">
                         <md-button class="md-icon-button">
                           <md-icon class="material-icons">
-                            more_vert
+                            chevron_right
                           </md-icon>
                         </md-button>
                         <md-menu-content width="4">
@@ -134,7 +129,7 @@
   <div class="api-side" flex-gt-xs="30" flex-xs>
     <md-list>
       <md-subheader>API Menu</md-subheader>
-      <md-list-item ng-click="null">
+      <md-list-item ng-click="$apiCtrl.showSchemaView($event)">
           <md-icon class="material-icons">chevron_right</md-icon>
           <p>Export spec ...</p>
       </md-list-item>

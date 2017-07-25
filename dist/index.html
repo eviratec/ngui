@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="charset" charset="utf-8">
+  <title>Data Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+</head>
+<body ng-app="DataStudioWebui">
+
+  <div id="root"
+    ui-view
+    layout="row"
+    layout-fill>
+  </div>
+
+  <script type="application/javascript">
+    (function (d, s) {'use strict';
+
+      requireScript('vendor.js', function () {
+        requireScripts([
+          'app.js',
+        ]);
+      });
+
+      requireStyle('app.css');
+
+      function requireStyle (src) {
+
+        var el = d.createElement('link');
+
+        el.setAttribute('rel', 'stylesheet');
+        el.setAttribute('type', 'text/css');
+        el.setAttribute('href', src);
+
+        appendEl(el);
+
+      }
+
+      function requireScripts (srcs) {
+        srcs.forEach(src => requireScript(src));
+      }
+
+      function requireScript (src, next) {
+
+        var el = d.createElement('script');
+
+        appendEl(el);
+
+        el.setAttribute('src', src);
+
+        if (next) {
+          el.addEventListener('load', function () {
+            next();
+          });
+        }
+
+      }
+
+      function appendEl (el) {
+        d[s].appendChild(el);
+      }
+
+    })(document, 'body');
+  </script>

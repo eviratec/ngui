@@ -12,31 +12,64 @@
     $apiCtrl.operations = operations;
     $apiCtrl.routes = routes;
 
-    $apiCtrl.createOperation = function ($event, route) {
+    $apiCtrl.showSchemaView = function ($event) {
 
-      var confirm = $mdDialog.prompt()
-        .title('Name the Operation')
-        .placeholder('Operation Name/ID')
-        .ariaLabel('Operation Name/ID')
-        .initialValue('getObject')
-        .targetEvent($event)
-        .ok('Create Operation')
-        .cancel('Cancel');
+      let schemaView = {
+        controller: 'AppApiSchemaDialogController',
+        templateUrl: 'modules/appEditor/html/dialog/viewApiSchema.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose: true,
+        fullscreen: true,
+        locals: {
+          operations: operations,
+          routes: routes,
+        },
+      };
 
-      $mdDialog.show(confirm).then(function(operationId) {
-        createOperation(route, operationId);
+      $mdDialog.show(schemaView).then(function() {
+
       }, function() {
 
       });
 
     }
 
-    function createOperation (route, operationId) {
+    $apiCtrl.createOperation = function ($event, route) {
+
+      let createApiOperation = {
+        controller: 'CreateApiOperationDialogController',
+        templateUrl: 'modules/appEditor/html/dialog/createApiOperation.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose: true,
+        fullscreen: true,
+        locals: {
+          apiRoute: route,
+        },
+      };
+
+      $mdDialog.show(createApiOperation).then(function(data) {
+        createOperation(data);
+      }, function() {
+
+      });
+
+    }
+
+    function createOperation (data) {
+
+      data = data || {};
+
+      let route = data._apiRoute;
+      let name = data.Name;
+      let method = data.Method;
 
       let routeId = route.Id || null;
       let newOperation = {
         RouteId: routeId,
-        Name: operationId,
+        Name: name,
+        Method: method,
       };
 
       $api.apiPost('/api/' + apiId() + '/operations', newOperation)
@@ -103,4 +136,29 @@
       return $apiCtrl.api.Id;
     }
 
+  }
+
+  angular.module('DataStudioWebui.AppEditor')
+    .controller('CreateApiOperationDialogController', CreateApiOperationDialogController);
+
+  CreateApiOperationDialogController.$inject = ['$scope', '$mdDialog', 'apiRoute'];
+  function CreateApiOperationDialogController (  $scope,   $mdDialog,   apiRoute) {
+    $scope.$data = {
+      Method: 'get',
+      _apiRoute: apiRoute,
+    };
+
+    $scope.apiRoute = apiRoute;
+
+    $scope.hide = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function() {
+      $mdDialog.hide($scope.$data);
+    };
   }
