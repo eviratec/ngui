@@ -55,6 +55,10 @@
 
     $mdThemingProvider.definePalette('sidebarBlueGrey', sidebarBlueGreyMap);
 
+    $mdThemingProvider.theme('darknav')
+      .primaryPalette('dsPurple')
+      .dark();
+
     $mdThemingProvider.theme('sidenavTheme')
       .primaryPalette('grey')
       .dark();
