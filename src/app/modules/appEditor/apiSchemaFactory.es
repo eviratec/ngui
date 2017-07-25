@@ -30,6 +30,10 @@
           }
           schema[targetPath][operation.Method] = {
             operationId: operation.Name,
+            summary: '',
+            details: '',
+            params: {},
+            responses: {},
           };
         });
 
@@ -38,29 +42,5 @@
     };
 
     return ApiSchema;
-
-  }
-
-  angular.module('DataStudioWebui.AppEditor')
-    .controller('AppApiSchemaDialogController', AppApiSchemaDialogController);
-
-  AppApiSchemaDialogController.$inject = ['ApiSchema', '$scope', '$mdDialog', 'operations', 'routes'];
-  function AppApiSchemaDialogController (  ApiSchema,   $scope,   $mdDialog,   operations,   routes) {
-
-    let schema = new ApiSchema(operations.all, routes);
-
-    $scope.schema = JSON.stringify(schema, undefined, '  ');
-
-    $scope.hide = function() {
-      $mdDialog.cancel();
-    };
-
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
-
-    $scope.answer = function() {
-      $mdDialog.hide();
-    };
 
   }

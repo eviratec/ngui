@@ -25,15 +25,24 @@
         })
         .state('app.user.app.dashboard', {
           url:'',
-          templateUrl: 'modules/appEditor/html/dashboard.html'
+          templateUrl: 'modules/appEditor/html/dashboard.html',
+          data: {
+            name: 'summary',
+          },
         })
         .state('app.user.app.schemas', {
           url:'/schemas',
-          templateUrl: 'modules/appEditor/html/schemas.html'
+          templateUrl: 'modules/appEditor/html/schemas.html',
+          data: {
+            name: 'schemas',
+          },
         })
         .state('app.user.app.schema', {
           url:'/schema/:schemaId',
           templateUrl: 'modules/appEditor/html/schema.html',
+          data: {
+            name: 'schemas',
+          },
           controller: 'AppSchemaEditorController',
           controllerAs: '$schemaCtrl',
           resolve: {
@@ -53,11 +62,17 @@
         })
         .state('app.user.app.apis', {
           url:'/apis',
-          templateUrl: 'modules/appEditor/html/apis.html'
+          templateUrl: 'modules/appEditor/html/apis.html',
+          data: {
+            name: 'apis',
+          },
         })
         .state('app.user.app.api', {
           url:'/api/:apiId',
           templateUrl: 'modules/appEditor/html/api.html',
+          data: {
+            name: 'apis',
+          },
           controller: 'AppApiEditorController',
           controllerAs: '$apiCtrl',
           resolve: {
@@ -112,7 +127,10 @@
         })
         .state('app.user.app.clients', {
           url:'/clients',
-          templateUrl: 'modules/appEditor/html/clients.html'
+          templateUrl: 'modules/appEditor/html/clients.html',
+          data: {
+            name: 'clients',
+          },
         });
 
   }]);

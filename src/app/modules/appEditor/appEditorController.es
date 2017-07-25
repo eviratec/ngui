@@ -13,7 +13,7 @@
     };
 
     $scope.chips = ["Id"];
-    $scope.currentNavItem = "overview";
+    $scope.currentNavItem = $state.current.data.name;
 
     $scope.go = function (dest) {
       $state.go(`app.user.app.${dest}`);
