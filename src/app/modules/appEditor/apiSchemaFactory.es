@@ -95,7 +95,9 @@
         let isVariable = ':' === uriPart[0];
         if (!isVariable) {
           let c = uriPart[0].toUpperCase();
-          className = c + uriPart.substr(1).replace(/s$/, '');
+          className = c + uriPart.substr(1);
+          className = className.replace(/ies$/, 'y');
+          className = className.replace(/s$/, '');
           op.tags.push(className);
           return;
         }

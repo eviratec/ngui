@@ -43,14 +43,25 @@
   angular.module('DataStudioWebui.AppEditor')
     .controller('CreateApiOperationDialogController', CreateApiOperationDialogController);
 
-  CreateApiOperationDialogController.$inject = ['$scope', '$mdDialog', 'apiRoute'];
-  function CreateApiOperationDialogController (  $scope,   $mdDialog,   apiRoute) {
+  CreateApiOperationDialogController.$inject = ['$scope', '$timeout', '$mdDialog', 'apiRoute'];
+  function CreateApiOperationDialogController (  $scope,   $timeout,   $mdDialog,   apiRoute) {
     $scope.$data = {
       Method: 'get',
       _apiRoute: apiRoute,
     };
 
     $scope.apiRoute = apiRoute;
+
+    $scope.$watch('$data.Method', function (newValue, oldValue) {
+      if (oldValue === newValue || !newValue) {
+        return;
+      }
+      let dialogEl = document.getElementById('Dialog_CreateApiOperation');
+      let nameInputEl = dialogEl.querySelector('input[name="name"]');
+      $timeout(function () {
+        nameInputEl.focus();
+      }, 300);
+    });
 
     $scope.hide = function() {
       $mdDialog.cancel();

@@ -22,7 +22,7 @@
         <div layout="row" layout-xs="column" layout-align="start start" layout-align-xs="start stretch">
           <md-input-container style="min-width: 100px;">
             <label>Method</label>
-            <md-select name="httpMethod" ng-model="$data.Method" required>
+            <md-select name="httpMethod" ng-model="$data.Method" md-autofocus required>
               <md-option value="get">GET</md-option>
               <md-option value="post">POST</md-option>
               <md-option value="put">PUT</md-option>
@@ -47,7 +47,9 @@
       <md-button ng-click="cancel()">
         Cancel
       </md-button>
-      <md-button class="md-primary" ng-click="answer('useful')">
+      <md-button type="submit"
+        class="md-primary"
+        ng-click="answer()">
         Create API Operation
       </md-button>
     </md-dialog-actions>

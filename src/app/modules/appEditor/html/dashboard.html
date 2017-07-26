@@ -1,7 +1,8 @@
 <div class="app-dashboard-cards" layout="row" layout-xs="column">
 
   <div flex>
-    <div layout="row"
+    <div style="padding:8px;"
+      layout="row"
       layout-xs="column"
       layout-align-xs="center stretch"
       layout-wrap>
@@ -58,8 +59,9 @@
                 <span class="md-title">APIs</span>
                 <span class="md-subhead">For Developers</span>
               </md-card-header-text>
-              <md-button style="margin: 0;" class="md-icon-button" ng-click="addApiDialog($event)">
-                <md-icon class="material-icons">add</md-icon>
+              <md-button style="margin: 0;" class="md-icon-button"
+                ui-sref="app.user.app.apis({ appId: model.Id })">
+                <md-icon class="material-icons">chevron_right</md-icon>
               </md-button>
             </md-card-header>
             <md-divider></md-divider>

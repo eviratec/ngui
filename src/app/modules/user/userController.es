@@ -23,9 +23,9 @@
 
       var confirm = $mdDialog.prompt()
         .title('Name your new app')
-        .placeholder('My First App')
+        .placeholder('My App')
         .ariaLabel('App name')
-        .initialValue('My First App')
+        .initialValue('')
         .targetEvent($event)
         .ok('Create App')
         .cancel('Cancel');

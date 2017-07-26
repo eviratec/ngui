@@ -69,35 +69,32 @@
                     flex-xs
                     flex-gt-xs="30">
                     <span class="md-caption http-method http-{{ operation.Method.toLowerCase() }}">
-                      {{ operation.Method }}
+                      {{ operation.Method.substr(0,3) }}
                     </span>
                     <span class="md-body-1">{{ operation.Name }}</span>
                     <span flex></span>
-                    <md-menu class="md-secondary">
-                      <md-button class="md-icon-button">
-                        <md-icon class="material-icons">
-                          chevron_right
-                        </md-icon>
-                      </md-button>
-                      <md-menu-content width="4">
-                        <md-menu-item>
-                          <md-button>
-                            Re-name
-                          </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                          <md-button>
-                            View details
-                          </md-button>
-                        </md-menu-item>
-                        <md-menu-divider></md-menu-divider>
-                        <md-menu-item>
-                          <md-button>
-                            Delete operation
-                          </md-button>
-                        </md-menu-item>
-                      </md-menu-content>
-                    </md-menu>
+                    <div>
+                      <md-menu class="md-secondary">
+                        <md-button class="md-icon-button" ng-click="$apiCtrl.openMenu($mdMenu, $event)">
+                          <md-icon md-menu-origin class="material-icons">
+                            chevron_right
+                          </md-icon>
+                        </md-button>
+                        <md-menu-content width="4">
+                          <md-menu-item>
+                            <md-button>
+                              Re-name
+                            </md-button>
+                          </md-menu-item>
+                          <md-menu-divider></md-menu-divider>
+                          <md-menu-item>
+                            <md-button ng-click="$apiCtrl.deleteOperation(operation)">
+                              Delete operation
+                            </md-button>
+                          </md-menu-item>
+                        </md-menu-content>
+                      </md-menu>
+                    </div>
                   </div>
 
                   <div class="inline-create-btn-wrapper"

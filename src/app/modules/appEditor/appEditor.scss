@@ -6,7 +6,7 @@
 }
 #Dialog_ViewApiSchema{
   .schema-source pre {
-    
+
   }
 }
 #appEditor {
@@ -119,6 +119,10 @@
           margin: 8px;
           background-color: #fff;
           border-radius: 2px;
+          span.md-body-1 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
           .http-method {
             line-height: 24px;
             padding: 8px;
