@@ -9,6 +9,23 @@
 
     $scope.schema = JSON.stringify(schema, undefined, '  ');
 
+    $scope.selectAll = function () {
+      let dialogEl = document.getElementById('Dialog_ViewApiSchema');
+      let sourceEl = dialogEl.querySelector("div[class='schema-source']");
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(sourceEl);
+        range.select();
+        return;
+      }
+      if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(sourceEl);
+        window.getSelection().addRange(range);
+        return;
+      }
+    };
+
     $scope.hide = function() {
       $mdDialog.cancel();
     };

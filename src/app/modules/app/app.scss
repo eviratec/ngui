@@ -108,10 +108,20 @@ md-content.ds-main-content {
   }
 }
 
-.user-dashboard md-card {
-  cursor: pointer;
-}
+.user-dashboard {
+  md-card {
+    cursor: pointer;
+  }
 
+  header {
+    padding: 24px;
+    background-color: #212121;
+    color: rgba(255,255,255,1);
+  }
+  header .md-subhead {
+    color: rgba(0,0,0,0.38);
+  }
+}
 .user-dashboard .create-app-card {
   height: 125px;
   margin: 8px;
